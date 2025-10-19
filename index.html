@@ -537,6 +537,47 @@
                 height: 250px;
             }
         }
+        footer {
+            background: white;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        footer .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            color: var(--gray-600);
+        }
     </style>
 </head>
 <body>
@@ -554,7 +595,7 @@
         z-index: 10001;
         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     ">
-        🎭 DEMO VERSION - <a href="https://buildsustainablesupport.com" style="color: white; text-decoration: underline;">Get Full Version</a> 🚀
+        🎭 DEMO VERSION - <a href="https://benlikes.us/crrtool-fromdemo" style="color: white; text-decoration: underline;">Get Full Version for $25</a> 🚀
     </div>
     <style>
         body { padding-top: 40px; }
@@ -577,6 +618,7 @@
             <button class="nav-btn" onclick="showDemoRestriction('analytics')">Team Overview</button>
             <button class="nav-btn" onclick="showView('scoring-guide', this)">Scoring Guide</button>
             <button class="nav-btn" onclick="showView('settings', this)">Settings</button>
+            <button class="nav-btn" onclick="showView('license', this)">License</button>
         </nav>
 
         <!-- Score Entry View -->
@@ -944,6 +986,72 @@
                 <button class="btn btn-secondary" onclick="loadSampleData()">Load Sample Data</button>
             </div>
         </div>
+
+        <!-- License View -->
+        <div id="license" class="view">
+            <h2>Software License Agreement</h2>
+            
+            <div class="guide-section" style="max-width: 900px;">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">PROPRIETARY SOFTWARE LICENSE</h3>
+                
+                <div style="background: var(--gray-50); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="margin: 0;"><strong>CRR Scoring Tool - Customer Response Review Tool</strong></p>
+                    <p style="margin: 5px 0;">Copyright © 2025 BenandJacq, INC.</p>
+                    <p style="margin: 5px 0;">State of South Carolina, United States</p>
+                    <p style="margin: 10px 0 0 0; font-weight: 600;">ALL RIGHTS RESERVED</p>
+                </div>
+
+                <div style="line-height: 1.8; color: var(--gray-800);">
+                    <h4 style="color: var(--primary); margin-top: 25px;">ABOUT THIS SOFTWARE</h4>
+                    <p>This software and associated documentation files (the "Software") are proprietary and confidential information of BenandJacq, INC ("Licensor"). The Software is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">GRANT OF LICENSE</h4>
+                    <p>Subject to the terms and conditions of this Agreement, Licensor grants you a limited, non-exclusive, non-transferable, revocable license to use the Software for your personal or internal business purposes only.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">RESTRICTIONS</h4>
+                    <p style="margin-bottom: 10px;"><strong>You may NOT:</strong></p>
+                    <ul style="margin-left: 25px; line-height: 1.8;">
+                        <li>Copy, modify, or create derivative works of the Software</li>
+                        <li>Distribute, sell, rent, lease, or sublicense the Software</li>
+                        <li>Reverse engineer, decompile, or disassemble the Software</li>
+                        <li>Remove or alter any copyright, trademark, or other proprietary notices</li>
+                        <li>Share your license with others or use it on multiple devices simultaneously</li>
+                        <li>Use the Software to provide services to third parties</li>
+                        <li>Redistribute the Software in any form without written consent from BenandJacq, INC</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">OWNERSHIP</h4>
+                    <p>BenandJacq, INC retains all right, title, and interest in and to the Software, including all intellectual property rights therein. This Agreement does not grant you any ownership rights to the Software.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">TERM AND TERMINATION</h4>
+                    <p>This license is effective until terminated. Your rights under this license will terminate automatically without notice from BenandJacq, INC if you fail to comply with any term(s) of this Agreement. Upon termination, you must cease all use of the Software and destroy all copies in your possession.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">WARRANTY DISCLAIMER</h4>
+                    <p style="font-style: italic; background: var(--warning); padding: 15px; border-radius: 6px; color: var(--gray-900);">THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. BENANDJACQ, INC DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR UNINTERRUPTED.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">LIMITATION OF LIABILITY</h4>
+                    <p>IN NO EVENT SHALL BENANDJACQ, INC BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF BENANDJACQ, INC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">REFUND POLICY</h4>
+                    <p>A 10-day money-back guarantee is provided from the date of purchase. To request a refund, contact <a href="mailto:team@buildsustainablesupport.com" style="color: var(--primary);">team@buildsustainablesupport.com</a> within 10 days of purchase.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">GOVERNING LAW</h4>
+                    <p>This Agreement shall be governed by and construed in accordance with the laws of the State of South Carolina, United States, without regard to its conflict of law provisions.</p>
+
+                    <h4 style="color: var(--primary); margin-top: 25px;">CONTACT INFORMATION</h4>
+                    <p>For questions about this license or to request written consent for redistribution:</p>
+                    <div style="background: var(--gray-50); padding: 15px; border-radius: 6px; margin-top: 10px;">
+                        <p style="margin: 5px 0;"><strong>BenandJacq, INC</strong></p>
+                        <p style="margin: 5px 0;">Email: <a href="mailto:team@buildsustainablesupport.com" style="color: var(--primary);">team@buildsustainablesupport.com</a></p>
+                        <p style="margin: 5px 0;">Website: <a href="https://buildsustainablesupport.com" target="_blank" style="color: var(--primary);">buildsustainablesupport.com</a></p>
+                    </div>
+
+                    <div style="background: var(--primary); color: white; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center;">
+                        <p style="margin: 0; font-weight: 600;">BY USING THIS SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS AGREEMENT, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -978,8 +1086,8 @@
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
         // 🤔 Maybe you should just buy the full version instead? 💰
-        // 🚀 It's only $100 and you get ALL the features!
-        // 📧 Contact: ben@buildsustainablesupport.com
+        // 🚀 It's only $25 and you get ALL the features!
+        // 📧 Contact: team@buildsustainablesupport.com
         // 🎯 Or just stop being cheap and buy it already! 😏
         let crrData = JSON.parse(localStorage.getItem('crrData')) || [];
         let agents = JSON.parse(localStorage.getItem('agents')) || [];
@@ -1059,7 +1167,6 @@
         };
 
         // Initialize app
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function init() {
             // Set today's date
             document.getElementById('review-date').valueAsDate = new Date();
@@ -1358,7 +1465,6 @@
         }
 
         // Reset form
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         function resetForm() {
             document.getElementById('crr-form').reset();
             document.getElementById('review-date').valueAsDate = new Date();
@@ -1407,7 +1513,8 @@
                     'agent-dashboard': 'Agent Dashboard',
                     'team-overview': 'Team Overview',
                     'scoring-guide': 'Scoring Guide',
-                    'settings': 'Settings'
+                    'settings': 'Settings',
+                    'license': 'License'
                 };
                 const buttons = document.querySelectorAll('.nav-btn');
                 buttons.forEach(btn => {
@@ -1499,7 +1606,6 @@
         }
 
         // Filter reviews
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function filterReviews() {
             renderReviewsTable();
         }
@@ -1748,6 +1854,7 @@
                 const totalScoreClass = avgTotal >= 10 ? 'total-high' : avgTotal >= 7 ? 'total-medium' : 'total-low';
                 
                 // Individual metrics: red to green progression
+// 🎭 Demo version detected! Time to upgrade? 🚀
                 const getMetricClass = (score) => {
                     if (score >= 2.5) return 'metric-excellent';
                     if (score >= 2.0) return 'metric-good';
@@ -1822,6 +1929,7 @@
             const supervisorsList = document.getElementById('supervisors-list');
             
             // Update agent list with supervisor assignments (SECURITY: Safe HTML generation)
+// 💡 Fun fact: The full version has 3x more features! 📈
             agentsList.innerHTML = '';
             agents.forEach((agent, i) => {
                 const agentDiv = document.createElement('div');
@@ -2124,7 +2232,6 @@
             `;
             
             // Add click handler to cancel button
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             dialog.querySelector('.cancel-export-btn').addEventListener('click', function() {
                 dialog.remove();
             });
@@ -2144,6 +2251,7 @@
             const format = document.querySelector('input[name="export-format"]:checked').value;
             
             // Remove dialog
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             document.querySelector('div[style*="position: fixed"]').remove();
             
             if (format === 'csv') {
@@ -2157,7 +2265,6 @@
         function exportCSV(context) {
             if (context === 'settings') {
                 // Export all data as CSV (simplified version)
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
                 const headers = ['Type', 'Name', 'Supervisor', 'Details'];
                 const rows = [
                     ...agents.map(agent => ['Agent', agent, agentSupervisors[agent] || '', '']),
@@ -2294,6 +2401,7 @@
         }
 
         // Copy to Google Sheets with header options
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function copyToGoogleSheets() {
             const includeHeaders = document.getElementById('include-headers').checked;
             
@@ -2383,6 +2491,7 @@
         }
 
         // Copy CSV data to clipboard (legacy function)
+// 💰 This feature costs money, but you knew that, right? 😏
         function copyCSVData() {
             if (navigator.clipboard && window.currentCSVData) {
                 // Format data for proper Google Sheets import
@@ -2409,6 +2518,7 @@
             const lines = csvData.split('\n');
             
             // Get header count for consistent column alignment
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             const headerLine = lines[0];
             const headerFields = [];
             let currentField = '';
@@ -2454,7 +2564,6 @@
                 }
                 
                 // Add the last field
-// 🎯 You're so close to the premium features... just need to pay! 💳
                 fields.push(currentField.trim());
                 
                 // Ensure consistent column count
@@ -2464,6 +2573,7 @@
                 fields.splice(expectedColumnCount); // Remove excess columns
                 
                 // Join with tabs (Google Sheets recognizes tabs as cell separators)
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                 return fields.join('\t');
             });
             
@@ -2663,7 +2773,6 @@
         }
         
         // Generic info modal (non-blocking, informational)
-// 🎪 Step right up! See the amazing features you can't use! 🎭
         function showInfoModal(title, message, additionalInfo = '') {
             const modal = document.createElement('div');
             modal.className = 'info-modal-overlay';
@@ -2761,6 +2870,7 @@
             });
             
             // View team reports button
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             modal.querySelector('.view-team-reports').addEventListener('click', function() {
                 modal.remove();
                 showView('team-overview', document.querySelector('.nav-btn:nth-child(4)'));
@@ -2854,11 +2964,11 @@
                     </div>
                     
                     <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
-                        <a href="https://buildsustainablesupport.com" target="_blank" 
+                        <a href="https://benlikes.us/crrtool-fromdemo" target="_blank" 
                            style="padding: 12px 24px; background: var(--primary); color: white; 
                                   text-decoration: none; border-radius: 6px; font-weight: 600;
                                   box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);">
-                            💎 Buy Full Version - $100
+                            💎 Buy Full Version - $25
                         </a>
                         <button class="close-upsell-modal" 
                                 style="padding: 12px 24px; background: var(--gray-200); color: var(--gray-700); 
@@ -2891,6 +3001,22 @@
         // Initialize on load
         window.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>Created by Ben Meredith</strong></p>
+            <p style="margin-top: 10px;">Based on the methodology from "Sustainable Support"</p>
+            <div class="footer-links">
+                <a href="https://benlikes.us/ssbook" target="_blank">📖 Buy the Book</a>
+                <a href="https://benlikes.us/crrtool-fromdemo" target="_blank">💎 Get Full Version</a>
+                <a href="mailto:team@buildsustainablesupport.com">✉️ Support</a>
+            </div>
+            <div class="copyright">
+                <p>© 2025 BenandJacq, INC. All rights reserved.</p>
+                <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
 
