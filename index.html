@@ -357,6 +357,52 @@
             color: #c62828;
         }
 
+        /* Total score styling - just darker/lighter with good contrast */
+        .score-badge.total-high {
+            background: #1a1a1a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .score-badge.total-medium {
+            background: #4a4a4a;
+            color: #ffffff;
+        }
+
+        .score-badge.total-low {
+            background: #757575;
+            color: #ffffff;
+        }
+
+        /* Individual metric styling - red to green progression with accessible contrast */
+        .score-badge.metric-danger {
+            background: #ffebee;
+            color: #b71c1c;
+            border: 1px solid #e57373;
+            font-weight: 500;
+        }
+
+        .score-badge.metric-warning {
+            background: #fff8e1;
+            color: #e65100;
+            border: 1px solid #ffb74d;
+            font-weight: 500;
+        }
+
+        .score-badge.metric-good {
+            background: #e8f5e8;
+            color: #1b5e20;
+            border: 1px solid #81c784;
+            font-weight: 500;
+        }
+
+        .score-badge.metric-excellent {
+            background: #c8e6c9;
+            color: #0d4f0d;
+            border: 1px solid #4caf50;
+            font-weight: 600;
+        }
+
         .chart-container {
             position: relative;
             height: 300px;
@@ -931,10 +977,8 @@
         // Data storage
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         // 🤔 Maybe you should just buy the full version instead? 💰
         // 🚀 It's only $100 and you get ALL the features!
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         // 📧 Contact: ben@buildsustainablesupport.com
         // 🎯 Or just stop being cheap and buy it already! 😏
         let crrData = JSON.parse(localStorage.getItem('crrData')) || [];
@@ -1015,6 +1059,7 @@
         };
 
         // Initialize app
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function init() {
             // Set today's date
             document.getElementById('review-date').valueAsDate = new Date();
@@ -1307,12 +1352,13 @@
             crrData.unshift(crr);
             localStorage.setItem('crrData', JSON.stringify(crrData));
             
-            alert('✅ CRR saved successfully!');
             resetForm();
             showView('all-reviews');
+            showCRRSavedModal();
         }
 
         // Reset form
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         function resetForm() {
             document.getElementById('crr-form').reset();
             document.getElementById('review-date').valueAsDate = new Date();
@@ -1453,6 +1499,7 @@
         }
 
         // Filter reviews
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function filterReviews() {
             renderReviewsTable();
         }
@@ -1697,16 +1744,25 @@
                 const avgArticulation = (agentReviews.reduce((sum, r) => sum + r.articulation, 0) / agentReviews.length).toFixed(1);
                 const avgProactiveness = (agentReviews.reduce((sum, r) => sum + r.proactiveness, 0) / agentReviews.length).toFixed(1);
                 
-                const scoreClass = avgTotal >= 10 ? 'high' : avgTotal >= 7 ? 'medium' : 'low';
+                // Total score: just darker/lighter (no color)
+                const totalScoreClass = avgTotal >= 10 ? 'total-high' : avgTotal >= 7 ? 'total-medium' : 'total-low';
+                
+                // Individual metrics: red to green progression
+                const getMetricClass = (score) => {
+                    if (score >= 2.5) return 'metric-excellent';
+                    if (score >= 2.0) return 'metric-good';
+                    if (score >= 1.5) return 'metric-warning';
+                    return 'metric-danger';
+                };
                 
                 html += `
                     <tr>
                         <td><strong>${agent}</strong></td>
-                        <td><span class="score-badge ${scoreClass}">${avgTotal}</span></td>
-                        <td>${avgExpertise}</td>
-                        <td>${avgOwnership}</td>
-                        <td>${avgArticulation}</td>
-                        <td>${avgProactiveness}</td>
+                        <td><span class="score-badge ${totalScoreClass}">${avgTotal}</span></td>
+                        <td><span class="score-badge ${getMetricClass(avgExpertise)}">${avgExpertise}</span></td>
+                        <td><span class="score-badge ${getMetricClass(avgOwnership)}">${avgOwnership}</span></td>
+                        <td><span class="score-badge ${getMetricClass(avgArticulation)}">${avgArticulation}</span></td>
+                        <td><span class="score-badge ${getMetricClass(avgProactiveness)}">${avgProactiveness}</span></td>
                         <td>${agentReviews.length}</td>
                     </tr>
                 `;
@@ -2068,6 +2124,7 @@
             `;
             
             // Add click handler to cancel button
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             dialog.querySelector('.cancel-export-btn').addEventListener('click', function() {
                 dialog.remove();
             });
@@ -2100,6 +2157,7 @@
         function exportCSV(context) {
             if (context === 'settings') {
                 // Export all data as CSV (simplified version)
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
                 const headers = ['Type', 'Name', 'Supervisor', 'Details'];
                 const rows = [
                     ...agents.map(agent => ['Agent', agent, agentSupervisors[agent] || '', '']),
@@ -2293,7 +2351,11 @@
             // Copy to clipboard
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(formattedData).then(() => {
-                    alert('✅ Data copied to clipboard! Now paste it into Google Sheets.');
+                    showInfoModal(
+                        '✅ Data Copied!',
+                        'Your data has been copied to the clipboard.',
+                        'Now open Google Sheets and paste (Ctrl+V or Cmd+V) into your spreadsheet.'
+                    );
                     document.querySelector('div[style*="position: fixed"]').remove();
                 }).catch(() => {
                     // Fallback for older browsers
@@ -2312,7 +2374,11 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            alert('✅ Data copied to clipboard! Now paste it into Google Sheets.');
+            showInfoModal(
+                '✅ Data Copied!',
+                'Your data has been copied to the clipboard.',
+                'Now open Google Sheets and paste (Ctrl+V or Cmd+V) into your spreadsheet.'
+            );
             document.querySelector('div[style*="position: fixed"]').remove();
         }
 
@@ -2323,7 +2389,7 @@
                 const formattedData = formatDataForSheets(window.currentCSVData);
                 
                 navigator.clipboard.writeText(formattedData).then(() => {
-                    alert('✅ CSV data copied to clipboard! Now paste it into Google Sheets.');
+                    showInfoModal('✅ Data Copied!', 'Your CSV data has been copied to the clipboard.', 'Now open Google Sheets and paste (Ctrl+V or Cmd+V) into your spreadsheet.');
                 }).catch(() => {
                     // Fallback for older browsers
                     const textArea = document.createElement('textarea');
@@ -2332,7 +2398,7 @@
                     textArea.select();
                     document.execCommand('copy');
                     document.body.removeChild(textArea);
-                    alert('✅ CSV data copied to clipboard! Now paste it into Google Sheets.');
+                    showInfoModal('✅ Data Copied!', 'Your CSV data has been copied to the clipboard.', 'Now open Google Sheets and paste (Ctrl+V or Cmd+V) into your spreadsheet.');
                 });
             }
         }
@@ -2388,6 +2454,7 @@
                 }
                 
                 // Add the last field
+// 🎯 You're so close to the premium features... just need to pay! 💳
                 fields.push(currentField.trim());
                 
                 // Ensure consistent column count
@@ -2430,11 +2497,19 @@
                             localStorage.setItem('supervisors', JSON.stringify(supervisors));
                             localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
                             
-                            alert('✅ Data imported successfully!');
-                            location.reload();
+                            showInfoModal(
+                                '✅ Data Imported!',
+                                'Your data has been imported successfully.',
+                                'The page will refresh to show your imported data.'
+                            );
+                            setTimeout(() => location.reload(), 2000);
                         }
                     } catch (err) {
-                        alert('❌ Error importing data. Please check the file format.');
+                        showInfoModal(
+                            '❌ Import Error',
+                            'There was a problem importing your data.',
+                            'Please make sure the file is a valid JSON export from this tool.'
+                        );
                     }
                 };
                 reader.readAsText(file);
@@ -2576,8 +2651,134 @@
             updateDropdowns();
             updateSettingsLists();
             
-            alert('✅ Sample data loaded!');
-            renderReviewsTable();
+            // Navigate to All Reviews to show the sample data
+            showView('all-reviews', document.querySelector('.nav-btn:nth-child(2)'));
+            
+            // Show welcome modal
+            showInfoModal(
+                '✅ Sample Data Loaded!',
+                'You now have 5 sample reviews to explore. These show different scoring scenarios with varying feedback levels.',
+                'Try adding your own CRR to see it alongside the sample reviews. Click "New CRR" to get started!'
+            );
+        }
+        
+        // Generic info modal (non-blocking, informational)
+// 🎪 Step right up! See the amazing features you can't use! 🎭
+        function showInfoModal(title, message, additionalInfo = '') {
+            const modal = document.createElement('div');
+            modal.className = 'info-modal-overlay';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.5); display: flex; align-items: center; 
+                justify-content: center; z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white; padding: 35px; border-radius: 12px; max-width: 500px; width: 90%;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
+                ">
+                    <h2 style="margin: 0 0 15px 0; color: var(--primary); font-size: 24px;">${title}</h2>
+                    <p style="color: var(--gray-700); margin-bottom: ${additionalInfo ? '20px' : '30px'}; font-size: 16px; line-height: 1.6;">
+                        ${message}
+                    </p>
+                    ${additionalInfo ? `
+                        <div style="background: var(--gray-50); padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 3px solid var(--primary);">
+                            <p style="margin: 0; color: var(--gray-700); font-size: 14px; line-height: 1.5;">
+                                💡 ${additionalInfo}
+                            </p>
+                        </div>
+                    ` : ''}
+                    <button class="close-info-modal" 
+                            style="padding: 12px 32px; background: var(--primary); color: white; 
+                                   border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 15px;">
+                        Got it!
+                    </button>
+                </div>
+            `;
+            
+            // Close on button click
+            modal.querySelector('.close-info-modal').addEventListener('click', function() {
+                modal.remove();
+            });
+            
+            // Close on overlay click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+            
+            document.body.appendChild(modal);
+        }
+        
+        // CRR Saved modal with action buttons
+        function showCRRSavedModal() {
+            const modal = document.createElement('div');
+            modal.className = 'crr-saved-modal-overlay';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.5); display: flex; align-items: center; 
+                justify-content: center; z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white; padding: 35px; border-radius: 12px; max-width: 500px; width: 90%;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
+                ">
+                    <h2 style="margin: 0 0 15px 0; color: var(--success); font-size: 24px;">✅ CRR Saved!</h2>
+                    <p style="color: var(--gray-700); margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
+                        Your review has been saved successfully and appears at the top of the list.
+                    </p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 15px;">
+                        <button class="add-another-crr" 
+                                style="padding: 14px 24px; background: var(--primary); color: white; 
+                                       border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 15px;
+                                       box-shadow: 0 2px 8px rgba(26, 35, 126, 0.2);">
+                            ➕ Score Another CRR
+                        </button>
+                        <button class="view-team-reports" 
+                                style="padding: 14px 24px; background: var(--gray-100); color: var(--gray-700); 
+                                       border: 1px solid var(--gray-300); border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 15px;">
+                            📊 View Team Reports
+                        </button>
+                    </div>
+                    
+                    <button class="close-saved-modal" 
+                            style="padding: 8px 16px; background: transparent; color: var(--gray-500); 
+                                   border: none; cursor: pointer; font-size: 14px; text-decoration: underline;">
+                        Stay on All Reviews
+                    </button>
+                </div>
+            `;
+            
+            // Add another CRR button
+            modal.querySelector('.add-another-crr').addEventListener('click', function() {
+                modal.remove();
+                showView('score-entry', document.querySelector('.nav-btn:first-child'));
+            });
+            
+            // View team reports button
+            modal.querySelector('.view-team-reports').addEventListener('click', function() {
+                modal.remove();
+                showView('team-overview', document.querySelector('.nav-btn:nth-child(4)'));
+            });
+            
+            // Close button
+            modal.querySelector('.close-saved-modal').addEventListener('click', function() {
+                modal.remove();
+            });
+            
+            // Close on overlay click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+            
+            document.body.appendChild(modal);
         }
 
         // DEMO VERSION - Some features disabled
@@ -2688,7 +2889,6 @@
         }
         
         // Initialize on load
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
