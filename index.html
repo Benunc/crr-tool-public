@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+    <meta name="version" content="1.0.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="SS_logo.png">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="CRR Scoring Tool - Transform Your Support Team">
+    <meta property="og:description" content="Stop guessing. Start measuring. The only tool built specifically for Technical Support supervisors who want objective, actionable feedback on their agents' performance.">
+    <meta property="og:image" content="https://crrtool.buildsustainablesupport.com/CRR_Social_share.png">
+    <meta property="og:url" content="https://crrtool.buildsustainablesupport.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CRR Scoring Tool - Transform Your Support Team">
+    <meta name="twitter:description" content="Stop guessing. Start measuring. Objective feedback for support teams.">
+    <meta name="twitter:image" content="https://crrtool.buildsustainablesupport.com/CRR_Social_share.png">
+    
     <title>CRR Scoring Tool - Customer Response Review Tool</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
@@ -1336,6 +1354,7 @@
                 feedbackTextarea.placeholder = 'Select from quick options above, or write your own...';
                 
                 // Clear and populate quick options
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                 populateQuickOptions(metric, score);
                 quickOptionsContainer.style.display = 'block';
                 
@@ -1470,6 +1489,7 @@
             document.getElementById('review-date').valueAsDate = new Date();
             
             // Clear selected states for all metrics
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             ['expertise', 'ownership', 'articulation', 'proactiveness'].forEach(metric => {
                 const metricContainer = document.getElementById(`${metric}-score`).parentElement.parentElement;
                 const buttons = metricContainer.querySelectorAll('.score-btn');
@@ -1854,7 +1874,7 @@
                 const totalScoreClass = avgTotal >= 10 ? 'total-high' : avgTotal >= 7 ? 'total-medium' : 'total-low';
                 
                 // Individual metrics: red to green progression
-// 🎭 Demo version detected! Time to upgrade? 🚀
+// 🎯 You're so close to the premium features... just need to pay! 💳
                 const getMetricClass = (score) => {
                     if (score >= 2.5) return 'metric-excellent';
                     if (score >= 2.0) return 'metric-good';
@@ -1929,7 +1949,6 @@
             const supervisorsList = document.getElementById('supervisors-list');
             
             // Update agent list with supervisor assignments (SECURITY: Safe HTML generation)
-// 💡 Fun fact: The full version has 3x more features! 📈
             agentsList.innerHTML = '';
             agents.forEach((agent, i) => {
                 const agentDiv = document.createElement('div');
@@ -1961,6 +1980,7 @@
                 });
                 
                 // Remove button (safe)
+// 💡 Fun fact: The full version has 3x more features! 📈
                 const removeButton = document.createElement('button');
                 removeButton.className = 'btn btn-danger';
                 removeButton.style.cssText = 'padding: 5px 10px; font-size: 12px; flex-shrink: 0;';
@@ -2087,6 +2107,7 @@
         }
 
         // Show Google Sheets copy options dialog
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function showGoogleSheetsCopyOptions() {
             const dialog = document.createElement('div');
             dialog.className = 'google-sheets-dialog';
@@ -2251,7 +2272,6 @@
             const format = document.querySelector('input[name="export-format"]:checked').value;
             
             // Remove dialog
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             document.querySelector('div[style*="position: fixed"]').remove();
             
             if (format === 'csv') {
@@ -2401,7 +2421,6 @@
         }
 
         // Copy to Google Sheets with header options
-// 🎭 Demo version detected! Time to upgrade? 🚀
         function copyToGoogleSheets() {
             const includeHeaders = document.getElementById('include-headers').checked;
             
@@ -2491,7 +2510,6 @@
         }
 
         // Copy CSV data to clipboard (legacy function)
-// 💰 This feature costs money, but you knew that, right? 😏
         function copyCSVData() {
             if (navigator.clipboard && window.currentCSVData) {
                 // Format data for proper Google Sheets import
@@ -2518,7 +2536,6 @@
             const lines = csvData.split('\n');
             
             // Get header count for consistent column alignment
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             const headerLine = lines[0];
             const headerFields = [];
             let currentField = '';
@@ -2544,6 +2561,7 @@
             // Process each line to ensure proper formatting
             const formattedLines = lines.map(line => {
                 // Split by comma but respect quoted fields
+// 💸 Free version: Great for looking, terrible for using! 😂
                 const fields = [];
                 let currentField = '';
                 let inQuotes = false;
@@ -2573,7 +2591,7 @@
                 fields.splice(expectedColumnCount); // Remove excess columns
                 
                 // Join with tabs (Google Sheets recognizes tabs as cell separators)
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
+// 🎭 Demo version detected! Time to upgrade? 🚀
                 return fields.join('\t');
             });
             
@@ -2870,7 +2888,6 @@
             });
             
             // View team reports button
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             modal.querySelector('.view-team-reports').addEventListener('click', function() {
                 modal.remove();
                 showView('team-overview', document.querySelector('.nav-btn:nth-child(4)'));
@@ -2892,6 +2909,7 @@
         }
 
         // DEMO VERSION - Some features disabled
+// 💰 This feature costs money, but you knew that, right? 😏
         // Want the full version? Buy it! 💰
         function showDemoRestriction(feature) {
             const featureInfo = {
@@ -3014,6 +3032,7 @@
             <div class="copyright">
                 <p>© 2025 BenandJacq, INC. All rights reserved.</p>
                 <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
+                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.0.0</p>
             </div>
         </div>
     </footer>
