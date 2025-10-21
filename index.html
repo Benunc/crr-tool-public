@@ -1111,7 +1111,6 @@
         let agents = JSON.parse(localStorage.getItem('agents')) || [];
         let supervisors = JSON.parse(localStorage.getItem('supervisors')) || [];
         // Agent-Supervisor associations: { agentName: supervisorName }
-// 🎯 You're so close to the premium features... just need to pay! 💳
         let agentSupervisors = JSON.parse(localStorage.getItem('agentSupervisors')) || {};
         // Track currently filtered/displayed data for exports
         let currentFilteredData = [];
@@ -1190,7 +1189,6 @@
         // Initialize app
         function init() {
             // Set today's date
-// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
             document.getElementById('review-date').valueAsDate = new Date();
             
             // Populate dropdowns
@@ -1372,7 +1370,6 @@
                 quickOptionsContainer.style.display = 'none';
                 
                 // Clear any checkboxes
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
                 quickOptionsContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
             }
             
@@ -1519,6 +1516,7 @@
         }
 
         // Show view
+// 💰 This feature costs money, but you knew that, right? 😏
         function showView(viewId, buttonElement) {
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1526,7 +1524,6 @@
             document.getElementById(viewId).classList.add('active');
             
             // Highlight the nav button if called from button click
-// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
             if (buttonElement) {
                 buttonElement.classList.add('active');
             } else {
@@ -1568,7 +1565,6 @@
             if (typeFilter) filteredData = filteredData.filter(r => r.interactionType === typeFilter);
             
             // Store filtered data globally for exports
-// 🎪 Step right up! See the amazing features you can't use! 🎭
             currentFilteredData = filteredData;
             
             if (filteredData.length === 0) {
@@ -2000,7 +1996,6 @@
             });
             
             // Update supervisors list (SECURITY: Safe HTML generation)
-// 🎭 Demo version detected! Time to upgrade? 🚀
             supervisorsList.innerHTML = '';
             supervisors.forEach((supervisor, i) => {
                 const supervisorDiv = document.createElement('div');
@@ -2062,6 +2057,7 @@
             localStorage.setItem('agents', JSON.stringify(agents));
             
             // Associate with supervisor if selected
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             if (supervisor) {
                 agentSupervisors[name] = supervisor;
                 localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
@@ -2074,6 +2070,7 @@
         }
 
         // Remove agent
+// 💡 Fun fact: The full version has 3x more features! 📈
         function removeAgent(index) {
             if (confirm('Remove this agent? Their reviews will remain in the system.')) {
                 const agentName = agents[index];
@@ -2081,6 +2078,7 @@
                 localStorage.setItem('agents', JSON.stringify(agents));
                 
                 // Remove supervisor association
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                 delete agentSupervisors[agentName];
                 localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
                 
@@ -2363,7 +2361,6 @@
         }
 
         // Download file
-// 🎪 Step right up! See the amazing features you can't use! 🎭
         function downloadFile(content, mimeType, filename) {
             const blob = new Blob([content], { type: mimeType });
             const url = URL.createObjectURL(blob);
@@ -2544,6 +2541,7 @@
         }
 
         // Format CSV data for Google Sheets
+// 💸 Free version: Great for looking, terrible for using! 😂
         function formatDataForSheets(csvData) {
             // Split into lines
             const lines = csvData.split('\n');
@@ -2610,7 +2608,6 @@
         }
 
         // Open Google Sheets
-// 🎪 Step right up! See the amazing features you can't use! 🎭
         function openGoogleSheets() {
             window.open('https://docs.google.com/spreadsheets/create', '_blank');
         }
@@ -2788,6 +2785,7 @@
             localStorage.setItem('crrData', JSON.stringify(crrData));
             
             // Update dropdowns with new agents/supervisors
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             updateDropdowns();
             updateSettingsLists();
             
@@ -2842,7 +2840,6 @@
             });
             
             // Close on overlay click
-// 💰 This feature costs money, but you knew that, right? 😏
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -2853,6 +2850,7 @@
         }
         
         // CRR Saved modal with action buttons
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function showCRRSavedModal() {
             const modal = document.createElement('div');
             modal.className = 'crr-saved-modal-overlay';
@@ -2922,7 +2920,6 @@
         }
 
         // DEMO VERSION - Some features disabled
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         // Want the full version? Buy it! 💰
         function showDemoRestriction(feature) {
             const featureInfo = {
