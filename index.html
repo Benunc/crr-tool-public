@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
-    <meta name="version" content="1.0.1">
+    <meta name="version" content="1.0.2">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="SS_logo.png">
@@ -538,7 +538,25 @@
             font-weight: bold;
         }
 
+        /* Desktop: show full headers, hide mobile headers */
+        .desktop-header {
+            display: inline;
+        }
+        
+        .mobile-header {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+            /* Mobile: hide full headers, show abbreviated */
+            .desktop-header {
+                display: none;
+            }
+            
+            .mobile-header {
+                display: inline;
+            }
+
             .app-container {
                 padding: 10px;
             }
@@ -553,6 +571,114 @@
 
             .chart-container {
                 height: 250px;
+            }
+
+            /* Responsive tables */
+            table {
+                width: 100%;
+                table-layout: auto;
+                font-size: 11px;
+            }
+
+            th, td {
+                padding: 6px 4px;
+                font-size: 10px;
+            }
+
+            /* Make score columns very compact on mobile */
+            table th:nth-child(4), /* Expertise */
+            table th:nth-child(5), /* Ownership */
+            table th:nth-child(6), /* Articulation */
+            table th:nth-child(7), /* Proactiveness */
+            table td:nth-child(4),
+            table td:nth-child(5),
+            table td:nth-child(6),
+            table td:nth-child(7) {
+                width: 40px;
+                padding: 6px 2px;
+                text-align: center;
+            }
+
+            /* Total score column */
+            table th:nth-child(8),
+            table td:nth-child(8) {
+                width: 45px;
+                padding: 6px 3px;
+                text-align: center;
+            }
+
+            /* Type column - make compact */
+            table th:nth-child(3),
+            table td:nth-child(3) {
+                width: 55px;
+                padding: 6px 4px;
+                font-size: 9px;
+            }
+
+            /* Date column - compact */
+            table th:nth-child(1),
+            table td:nth-child(1) {
+                width: 70px;
+                padding: 6px 4px;
+                font-size: 9px;
+            }
+
+            /* Details button column - minimal */
+            table th:nth-child(9),
+            table td:nth-child(9) {
+                width: 50px;
+                padding: 6px 2px;
+            }
+
+            table td:nth-child(9) button {
+                padding: 4px 8px !important;
+                font-size: 10px !important;
+            }
+
+            /* Make details row wrap text properly */
+            .details-row td {
+                white-space: normal !important;
+                word-wrap: break-word;
+                padding: 10px !important;
+                overflow: hidden;
+            }
+
+            /* Force details content to fit in viewport */
+            .details-row td {
+                width: auto !important;
+            }
+
+            .details-content h4 {
+                margin-top: 0;
+                margin-bottom: 8px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .details-content p {
+                font-size: 11px;
+                line-height: 1.5;
+                margin-bottom: 10px;
+                word-break: break-word;
+            }
+
+            .details-content strong {
+                display: inline;
+                color: var(--primary);
+                margin-right: 5px;
+            }
+
+            .details-content span {
+                display: inline;
+            }
+
+            /* Make table scrollable on mobile */
+            table thead {
+                display: table-header-group;
+            }
+
+            table tbody {
+                display: table-row-group;
             }
         }
         footer {
@@ -1091,6 +1217,13 @@
             return input.slice(0, maxLength).replace(/[<>'"&]/g, '');
         }
 
+        function validateFeedback(input, maxLength = 1000) {
+            if (typeof input !== 'string') return '';
+            // For feedback, allow quotes but remove script-dangerous chars
+// 🎭 Demo version detected! Time to upgrade? 🚀
+            return input.slice(0, maxLength).replace(/[<>&]/g, '');
+        }
+
         function safeInnerHTML(element, content) {
             // Use textContent for safety, or sanitize if HTML is needed
             if (typeof content === 'string') {
@@ -1140,6 +1273,7 @@
         };
 
         // Quick feedback options from the book
+// 🎭 Demo version detected! Time to upgrade? 🚀
         const quickOptions = {
             expertise: {
                 1: [
@@ -1187,6 +1321,7 @@
         };
 
         // Initialize app
+// 🎪 Step right up! See the amazing features you can't use! 🎭
         function init() {
             // Set today's date
             document.getElementById('review-date').valueAsDate = new Date();
@@ -1214,6 +1349,7 @@
         }
         
         // Welcome dialog for first-time users
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
         function showWelcomeDialog() {
             const dialog = document.createElement('div');
             dialog.style.cssText = `
@@ -1388,6 +1524,7 @@
             container.appendChild(label);
             
             // Add checkboxes for each option
+// 💰 This feature costs money, but you knew that, right? 😏
             options.forEach(option => {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'quick-option';
@@ -1470,10 +1607,10 @@
                            parseInt(document.getElementById('ownership-score').value) + 
                            parseInt(document.getElementById('articulation-score').value) + 
                            parseInt(document.getElementById('proactiveness-score').value),
-                expertiseFeedback: validateInput(document.getElementById('expertise-feedback').value, 500),
-                ownershipFeedback: validateInput(document.getElementById('ownership-feedback').value, 500),
-                articulationFeedback: validateInput(document.getElementById('articulation-feedback').value, 500),
-                proactivenessFeedback: validateInput(document.getElementById('proactiveness-feedback').value, 500)
+                expertiseFeedback: validateFeedback(document.getElementById('expertise-feedback').value, 1000),
+                ownershipFeedback: validateFeedback(document.getElementById('ownership-feedback').value, 1000),
+                articulationFeedback: validateFeedback(document.getElementById('articulation-feedback').value, 1000),
+                proactivenessFeedback: validateFeedback(document.getElementById('proactiveness-feedback').value, 1000)
             };
             
             crrData.unshift(crr);
@@ -1516,7 +1653,6 @@
         }
 
         // Show view
-// 💰 This feature costs money, but you knew that, right? 😏
         function showView(viewId, buttonElement) {
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1578,13 +1714,11 @@
                         <tr>
                             <th>Date</th>
                             <th>Agent</th>
-                            <th>Supervisor</th>
                             <th>Type</th>
-                            <th>Link</th>
-                            <th>Expertise</th>
-                            <th>Ownership</th>
-                            <th>Articulation</th>
-                            <th>Proactiveness</th>
+                            <th class="metric-header"><span class="desktop-header">Expertise</span><span class="mobile-header">EXP</span></th>
+                            <th class="metric-header"><span class="desktop-header">Ownership</span><span class="mobile-header">OWN</span></th>
+                            <th class="metric-header"><span class="desktop-header">Articulation</span><span class="mobile-header">ART</span></th>
+                            <th class="metric-header"><span class="desktop-header">Proactiveness</span><span class="mobile-header">PRO</span></th>
                             <th>Total</th>
                             <th>Details</th>
                         </tr>
@@ -1596,15 +1730,16 @@
                 const scoreClass = crr.totalScore >= 10 ? 'high' : crr.totalScore >= 7 ? 'medium' : 'low';
                 // Handle backward compatibility with old interactionId field
                 const link = crr.interactionLink || crr.interactionId || '#';
-                const linkDisplay = crr.interactionLink ? '🔗 View' : (crr.interactionId || 'N/A');
+                // Make the type text clickable
+                const typeDisplay = crr.interactionLink 
+                    ? `<a href="${link}" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 500;">${crr.interactionType}</a>` 
+                    : crr.interactionType;
                 
                 html += `
                     <tr>
                         <td>${new Date(crr.date).toLocaleDateString()}</td>
                         <td>${crr.agentName}</td>
-                        <td>${crr.supervisor}</td>
-                        <td>${crr.interactionType}</td>
-                        <td>${crr.interactionLink ? `<a href="${link}" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">${linkDisplay}</a>` : linkDisplay}</td>
+                        <td>${typeDisplay}</td>
                         <td><span class="score-badge ${crr.expertise === 3 ? 'high' : crr.expertise === 1 ? 'low' : 'medium'}">${crr.expertise}</span></td>
                         <td><span class="score-badge ${crr.ownership === 3 ? 'high' : crr.ownership === 1 ? 'low' : 'medium'}">${crr.ownership}</span></td>
                         <td><span class="score-badge ${crr.articulation === 3 ? 'high' : crr.articulation === 1 ? 'low' : 'medium'}">${crr.articulation}</span></td>
@@ -1612,13 +1747,13 @@
                         <td><span class="score-badge ${scoreClass}">${crr.totalScore}/12</span></td>
                         <td><button class="btn" style="padding: 5px 12px; font-size: 12px;" onclick="showCRRDetails(${index})">View</button></td>
                     </tr>
-                    <tr id="details-${index}" style="display: none;">
-                        <td colspan="11" style="background: var(--gray-50); padding: 20px;">
+                    <tr id="details-${index}" class="details-row" style="display: none;">
+                        <td colspan="9" class="details-content" style="background: var(--gray-50); padding: 20px;">
                             <h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>
-                            ${crr.expertiseFeedback ? `<p><strong>Expertise (${crr.expertise}):</strong> ${crr.expertiseFeedback}</p>` : ''}
-                            ${crr.ownershipFeedback ? `<p><strong>Ownership (${crr.ownership}):</strong> ${crr.ownershipFeedback}</p>` : ''}
-                            ${crr.articulationFeedback ? `<p><strong>Articulation (${crr.articulation}):</strong> ${crr.articulationFeedback}</p>` : ''}
-                            ${crr.proactivenessFeedback ? `<p><strong>Proactiveness (${crr.proactiveness}):</strong> ${crr.proactivenessFeedback}</p>` : ''}
+                            ${crr.expertiseFeedback ? `<p><strong>Expertise (${crr.expertise}):</strong> <span style="white-space: pre-wrap;">${crr.expertiseFeedback}</span></p>` : ''}
+                            ${crr.ownershipFeedback ? `<p><strong>Ownership (${crr.ownership}):</strong> <span style="white-space: pre-wrap;">${crr.ownershipFeedback}</span></p>` : ''}
+                            ${crr.articulationFeedback ? `<p><strong>Articulation (${crr.articulation}):</strong> <span style="white-space: pre-wrap;">${crr.articulationFeedback}</span></p>` : ''}
+                            ${crr.proactivenessFeedback ? `<p><strong>Proactiveness (${crr.proactiveness}):</strong> <span style="white-space: pre-wrap;">${crr.proactivenessFeedback}</span></p>` : ''}
                             ${!crr.expertiseFeedback && !crr.ownershipFeedback && !crr.articulationFeedback && !crr.proactivenessFeedback ? '<p style="color: var(--gray-600);">No feedback provided for this review.</p>' : ''}
                         </td>
                     </tr>
@@ -2045,6 +2180,7 @@
         }
 
         // Add agent (SECURITY: Input validation)
+// 💰 This feature costs money, but you knew that, right? 😏
         function addAgent() {
             const name = validateInput(document.getElementById('new-agent-name').value.trim(), 50);
             const supervisor = validateInput(document.getElementById('new-agent-supervisor').value, 50);
@@ -2057,7 +2193,6 @@
             localStorage.setItem('agents', JSON.stringify(agents));
             
             // Associate with supervisor if selected
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             if (supervisor) {
                 agentSupervisors[name] = supervisor;
                 localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
@@ -2070,7 +2205,6 @@
         }
 
         // Remove agent
-// 💡 Fun fact: The full version has 3x more features! 📈
         function removeAgent(index) {
             if (confirm('Remove this agent? Their reviews will remain in the system.')) {
                 const agentName = agents[index];
@@ -2078,7 +2212,6 @@
                 localStorage.setItem('agents', JSON.stringify(agents));
                 
                 // Remove supervisor association
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                 delete agentSupervisors[agentName];
                 localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
                 
@@ -2112,6 +2245,7 @@
         }
 
         // Show Google Sheets copy options dialog
+// 💰 This feature costs money, but you knew that, right? 😏
         function showGoogleSheetsCopyOptions() {
             const dialog = document.createElement('div');
             dialog.className = 'google-sheets-dialog';
@@ -2175,6 +2309,7 @@
             `;
             
             // Add click handler to close button
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             dialog.querySelector('.close-dialog-btn').addEventListener('click', function() {
                 dialog.remove();
             });
@@ -2541,67 +2676,61 @@
         }
 
         // Format CSV data for Google Sheets
-// 💸 Free version: Great for looking, terrible for using! 😂
         function formatDataForSheets(csvData) {
-            // Split into lines
-            const lines = csvData.split('\n');
-            
-            // Get header count for consistent column alignment
-            const headerLine = lines[0];
-            const headerFields = [];
+            // Parse CSV properly handling quoted fields with newlines
+            const rows = [];
+            let currentRow = [];
             let currentField = '';
             let inQuotes = false;
             
-            for (let i = 0; i < headerLine.length; i++) {
-                const char = headerLine[i];
+            for (let i = 0; i < csvData.length; i++) {
+                const char = csvData[i];
+                const nextChar = csvData[i + 1];
                 
-                if (char === '"' && !inQuotes) {
-                    inQuotes = true;
-                } else if (char === '"' && inQuotes) {
-                    inQuotes = false;
+                if (char === '"') {
+                    if (inQuotes && nextChar === '"') {
+                        // Escaped quote - add one quote and skip next
+                        currentField += '"';
+                        i++;
+                    } else {
+                        // Toggle quote state
+                        inQuotes = !inQuotes;
+                    }
                 } else if (char === ',' && !inQuotes) {
-                    headerFields.push(currentField.trim());
+                    // End of field
+                    currentRow.push(currentField);
+                    currentField = '';
+                } else if (char === '\n' && !inQuotes) {
+                    // End of row
+                    currentRow.push(currentField);
+                    rows.push(currentRow);
+                    currentRow = [];
                     currentField = '';
                 } else {
+                    // Regular character (including newlines inside quotes)
                     currentField += char;
                 }
             }
-            headerFields.push(currentField.trim());
-            const expectedColumnCount = headerFields.length;
             
-            // Process each line to ensure proper formatting
-            const formattedLines = lines.map(line => {
-                // Split by comma but respect quoted fields
-                const fields = [];
-                let currentField = '';
-                let inQuotes = false;
-                
-                for (let i = 0; i < line.length; i++) {
-                    const char = line[i];
-                    
-                    if (char === '"' && !inQuotes) {
-                        inQuotes = true;
-                    } else if (char === '"' && inQuotes) {
-                        inQuotes = false;
-                    } else if (char === ',' && !inQuotes) {
-                        fields.push(currentField.trim());
-                        currentField = '';
-                    } else {
-                        currentField += char;
+            // Add last field and row if exists
+            if (currentField || currentRow.length > 0) {
+                currentRow.push(currentField);
+                if (currentRow.length > 0) {
+                    rows.push(currentRow);
+                }
+            }
+            
+            // Convert to tab-separated format for Google Sheets
+            // Keep fields quoted if they contain special characters
+            const formattedLines = rows.map(row => {
+                return row.map(field => {
+                    // If field contains newlines, tabs, or quotes, keep it quoted
+                    if (field.includes('\n') || field.includes('\t') || field.includes('"')) {
+                        // Escape quotes by doubling them, then wrap in quotes
+                        return `"${field.replace(/"/g, '""')}"`;
                     }
-                }
-                
-                // Add the last field
-                fields.push(currentField.trim());
-                
-                // Ensure consistent column count
-                while (fields.length < expectedColumnCount) {
-                    fields.push('');
-                }
-                fields.splice(expectedColumnCount); // Remove excess columns
-                
-                // Join with tabs (Google Sheets recognizes tabs as cell separators)
-                return fields.join('\t');
+                    return field;
+                }).join('\t');
             });
             
             return formattedLines.join('\n');
@@ -2785,7 +2914,6 @@
             localStorage.setItem('crrData', JSON.stringify(crrData));
             
             // Update dropdowns with new agents/supervisors
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
             updateDropdowns();
             updateSettingsLists();
             
@@ -2850,7 +2978,6 @@
         }
         
         // CRR Saved modal with action buttons
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function showCRRSavedModal() {
             const modal = document.createElement('div');
             modal.className = 'crr-saved-modal-overlay';
@@ -3042,7 +3169,7 @@
             <div class="copyright">
                 <p>© 2025 BenandJacq, INC. All rights reserved.</p>
                 <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
-                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.0.1</p>
+                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.0.2</p>
             </div>
         </div>
     </footer>
