@@ -1112,6 +1112,8 @@
         let supervisors = JSON.parse(localStorage.getItem('supervisors')) || [];
         // Agent-Supervisor associations: { agentName: supervisorName }
         let agentSupervisors = JSON.parse(localStorage.getItem('agentSupervisors')) || {};
+        // Track currently filtered/displayed data for exports
+        let currentFilteredData = [];
 
         // Score hints
         const scoreHints = {
@@ -1354,7 +1356,6 @@
                 feedbackTextarea.placeholder = 'Select from quick options above, or write your own...';
                 
                 // Clear and populate quick options
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                 populateQuickOptions(metric, score);
                 quickOptionsContainer.style.display = 'block';
                 
@@ -1484,12 +1485,12 @@
         }
 
         // Reset form
+// 🎪 Step right up! See the amazing features you can't use! 🎭
         function resetForm() {
             document.getElementById('crr-form').reset();
             document.getElementById('review-date').valueAsDate = new Date();
             
             // Clear selected states for all metrics
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             ['expertise', 'ownership', 'articulation', 'proactiveness'].forEach(metric => {
                 const metricContainer = document.getElementById(`${metric}-score`).parentElement.parentElement;
                 const buttons = metricContainer.querySelectorAll('.score-btn');
@@ -1562,6 +1563,9 @@
             if (agentFilter) filteredData = filteredData.filter(r => r.agentName === agentFilter);
             if (supervisorFilter) filteredData = filteredData.filter(r => r.supervisor === supervisorFilter);
             if (typeFilter) filteredData = filteredData.filter(r => r.interactionType === typeFilter);
+            
+            // Store filtered data globally for exports
+            currentFilteredData = filteredData;
             
             if (filteredData.length === 0) {
                 container.innerHTML = '<div class="empty-state"><h3>No reviews found</h3><p>Start by creating your first CRR!</p></div>';
@@ -1874,7 +1878,6 @@
                 const totalScoreClass = avgTotal >= 10 ? 'total-high' : avgTotal >= 7 ? 'total-medium' : 'total-low';
                 
                 // Individual metrics: red to green progression
-// 🎯 You're so close to the premium features... just need to pay! 💳
                 const getMetricClass = (score) => {
                     if (score >= 2.5) return 'metric-excellent';
                     if (score >= 2.0) return 'metric-good';
@@ -1980,7 +1983,6 @@
                 });
                 
                 // Remove button (safe)
-// 💡 Fun fact: The full version has 3x more features! 📈
                 const removeButton = document.createElement('button');
                 removeButton.className = 'btn btn-danger';
                 removeButton.style.cssText = 'padding: 5px 10px; font-size: 12px; flex-shrink: 0;';
@@ -2107,7 +2109,6 @@
         }
 
         // Show Google Sheets copy options dialog
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function showGoogleSheetsCopyOptions() {
             const dialog = document.createElement('div');
             dialog.className = 'google-sheets-dialog';
@@ -2299,13 +2300,16 @@
                 downloadFile(csvContent, 'text/csv', 'all-data.csv');
             } else {
                 // Export CRR data as CSV with all columns present
+                // Use filtered data if available (from All Reviews view), otherwise use all data
+                const dataToExport = currentFilteredData.length > 0 ? currentFilteredData : crrData;
+                
                 const headers = [
                     'Date', 'Agent', 'Supervisor', 'Interaction Type', 'Interaction Link',
                     'Expertise Score', 'Expertise Feedback', 'Ownership Score', 'Ownership Feedback',
                     'Articulation Score', 'Articulation Feedback', 'Proactiveness Score', 'Proactiveness Feedback', 'Total Score'
                 ];
                 
-                const rows = crrData.map(crr => [
+                const rows = dataToExport.map(crr => [
                     crr.date || '', 
                     crr.agentName || '', 
                     crr.supervisor || '', 
@@ -2354,6 +2358,7 @@
         }
 
         // Download file
+// 🎯 You're so close to the premium features... just need to pay! 💳
         function downloadFile(content, mimeType, filename) {
             const blob = new Blob([content], { type: mimeType });
             const url = URL.createObjectURL(blob);
@@ -2424,6 +2429,9 @@
         function copyToGoogleSheets() {
             const includeHeaders = document.getElementById('include-headers').checked;
             
+            // Use filtered data if available (from All Reviews view), otherwise use all data
+            const dataToExport = currentFilteredData.length > 0 ? currentFilteredData : crrData;
+            
             // Generate CSV data
             const headers = [
                 'Date', 'Agent', 'Supervisor', 'Interaction Type', 'Interaction Link',
@@ -2431,7 +2439,7 @@
                 'Articulation Score', 'Articulation Feedback', 'Proactiveness Score', 'Proactiveness Feedback', 'Total Score'
             ];
             
-            const rows = crrData.map(crr => [
+            const rows = dataToExport.map(crr => [
                 crr.date || '', 
                 crr.agentName || '', 
                 crr.supervisor || '', 
@@ -2473,6 +2481,7 @@
             }
             
             // Format for Google Sheets (tab-separated)
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             const formattedData = formatDataForSheets(csvContent);
             
             // Copy to clipboard
@@ -2519,6 +2528,7 @@
                     showInfoModal('✅ Data Copied!', 'Your CSV data has been copied to the clipboard.', 'Now open Google Sheets and paste (Ctrl+V or Cmd+V) into your spreadsheet.');
                 }).catch(() => {
                     // Fallback for older browsers
+// 💡 Fun fact: The full version has 3x more features! 📈
                     const textArea = document.createElement('textarea');
                     textArea.value = formattedData;
                     document.body.appendChild(textArea);
@@ -2561,7 +2571,7 @@
             // Process each line to ensure proper formatting
             const formattedLines = lines.map(line => {
                 // Split by comma but respect quoted fields
-// 💸 Free version: Great for looking, terrible for using! 😂
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
                 const fields = [];
                 let currentField = '';
                 let inQuotes = false;
@@ -2591,7 +2601,6 @@
                 fields.splice(expectedColumnCount); // Remove excess columns
                 
                 // Join with tabs (Google Sheets recognizes tabs as cell separators)
-// 🎭 Demo version detected! Time to upgrade? 🚀
                 return fields.join('\t');
             });
             
@@ -2909,7 +2918,6 @@
         }
 
         // DEMO VERSION - Some features disabled
-// 💰 This feature costs money, but you knew that, right? 😏
         // Want the full version? Buy it! 💰
         function showDemoRestriction(feature) {
             const featureInfo = {
