@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https:;">
-    <meta name="version" content="1.1.0">
+    <meta name="version" content="1.1.1">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="SS_logo.png">
@@ -830,6 +830,329 @@
             font-size: 12px;
             color: var(--gray-600);
         }
+
+        /* Enhanced Agent Dashboard Styles */
+        .agent-dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .agent-dashboard-header h2 {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        .overview-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .overview-stat {
+            text-align: center;
+        }
+
+        .overview-stat .value {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .overview-stat .label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+        }
+
+        .metric-card.metric-excellent-only {
+            border-left-color: #059669;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .metric-card.metric-good-dark {
+            border-left-color: #16a34a;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .metric-card.metric-good-medium {
+            border-left-color: #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .metric-card.metric-good-light {
+            border-left-color: #4ade80;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .metric-card.metric-warning-dark {
+            border-left-color: #ea580c;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .metric-card.metric-warning {
+            border-left-color: #f97316;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .metric-card.metric-danger-light {
+            border-left-color: #dc2626;
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+        }
+
+        .metric-card.metric-danger-1 {
+            border-left-color: #991b1b;
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .metric-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--gray-800);
+        }
+
+        .metric-score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gray-800);
+        }
+
+        .metric-progress {
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #dc2626 0%, #f97316 50%, #22c55e 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .insights-section {
+            margin: 40px 0;
+        }
+
+        .insights-section h3 {
+            margin-bottom: 20px;
+            color: var(--gray-800);
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .insight-card.strength {
+            border-left: 4px solid #22c55e;
+        }
+
+        .insight-card.improvement {
+            border-left: 4px solid #f97316;
+        }
+
+        .insight-card h4 {
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .insight-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .insight-card li {
+            margin-bottom: 8px;
+            color: var(--gray-700);
+        }
+
+        .empty-insight-state {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .empty-insight-state.success {
+            border: 2px solid #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .empty-insight-state.warning {
+            border: 2px solid #f97316;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .empty-insight-state p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+
+        .reason-analysis {
+            margin: 40px 0;
+        }
+
+        .reason-analysis h3 {
+            margin-bottom: 20px;
+            color: var(--gray-800);
+        }
+
+        .reason-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .reason-tab {
+            padding: 10px 20px;
+            border: 2px solid var(--gray-300);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .reason-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .reason-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .reason-category {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .reason-category h4 {
+            margin: 0 0 10px 0;
+            color: var(--gray-800);
+            font-size: 1rem;
+        }
+
+        .reason-category ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .reason-category li {
+            margin-bottom: 5px;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .empty-reason-state {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .empty-reason-state.success {
+            border-left: 4px solid #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .empty-reason-state.warning {
+            border-left: 4px solid #f97316;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .empty-reason-state.neutral {
+            border-left: 4px solid #6b7280;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .empty-reason-state p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .agent-dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .overview-stats {
+                gap: 20px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reason-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reason-tabs {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1325,6 +1648,7 @@
     <script>
         // Security: Input sanitization functions
         // 🔒 Ooh, look at you trying to reverse engineer this! 
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
         // 🕵️‍♂️ You're like a digital detective, but without the paycheck! 💸
         // 💡 Pro tip: It's easier to just buy the product than to hack it! 🛒
         // 🎭 But hey, if you're having fun, keep going! Just... maybe buy it too? 😅
@@ -1359,6 +1683,7 @@
         // Data storage
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
+// 💡 Fun fact: The full version has 3x more features! 📈
         // 🤔 Maybe you should just buy the full version instead? 💰
         // 🚀 It's only $25 and you get ALL the features!
         // 📧 Contact: team@buildsustainablesupport.com
@@ -1549,6 +1874,7 @@
         }
 
         // Helper function to get display text for checked reasons
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function getCheckedReasonsText(metric) {
             const text = [];
             const score = getCurrentScore(metric);
@@ -2184,6 +2510,7 @@
                 detailsRow.style.display = 'table-row';
                 
                 // Populate details if not already done
+// 🎭 Demo version detected! Time to upgrade? 🚀
                 if (!detailsRow.dataset.populated) {
                     const crr = crrData[index];
                     let detailsHtml = '<h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>';
@@ -2241,6 +2568,7 @@
                     detailsHtml += '</p>';
                     
                     // Only add "no feedback" message if truly no feedback
+// 🎭 Demo version detected! Time to upgrade? 🚀
                     if (!crr.expertiseFeedback && !crr.ownershipFeedback && !crr.articulationFeedback && !crr.proactivenessFeedback &&
                         (!crr.expertiseDetails || crr.expertiseDetails.selectedReasonsText.length === 0) &&
                         (!crr.ownershipDetails || crr.ownershipDetails.selectedReasonsText.length === 0) &&
@@ -2281,44 +2609,126 @@
             const avgArticulation = (agentReviews.reduce((sum, r) => sum + r.articulation, 0) / agentReviews.length).toFixed(1);
             const avgProactiveness = (agentReviews.reduce((sum, r) => sum + r.proactiveness, 0) / agentReviews.length).toFixed(1);
             
-            const threes = agentReviews.reduce((sum, r) => sum + [r.expertise, r.ownership, r.articulation, r.proactiveness].filter(s => s === 3).length, 0);
-            const twos = agentReviews.reduce((sum, r) => sum + [r.expertise, r.ownership, r.articulation, r.proactiveness].filter(s => s === 2).length, 0);
-            const ones = agentReviews.reduce((sum, r) => sum + [r.expertise, r.ownership, r.articulation, r.proactiveness].filter(s => s === 1).length, 0);
+            // Get color classes for metrics using the same logic as team overview
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
+            const getMetricClass = (score) => {
+                const s = parseFloat(score);
+                if (s === 3.0) return 'metric-excellent-only';
+                if (s >= 2.5) return 'metric-good-dark';
+                if (s >= 2.3) return 'metric-good-medium';
+                if (s >= 2.0) return 'metric-good-light';
+                if (s >= 1.8) return 'metric-warning-dark';
+                if (s >= 1.5) return 'metric-warning';
+                if (s >= 1.2) return 'metric-danger-light';
+                if (s >= 1.0) return 'metric-danger-1';
+                return 'metric-danger-1';
+            };
+            
+            // Analyze granular metrics data
+            const reasonAnalysis = analyzeAgentReasons(agentReviews);
+            const insights = generateAgentInsights(agentReviews, reasonAnalysis);
             
             let html = `
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="value">${avgTotal}</div>
-                        <div class="label">Avg Total Score</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="value">${avgExpertise}</div>
-                        <div class="label">Avg Expertise</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="value">${avgOwnership}</div>
-                        <div class="label">Avg Ownership</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="value">${avgArticulation}</div>
-                        <div class="label">Avg Articulation</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="value">${avgProactiveness}</div>
-                        <div class="label">Avg Proactiveness</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="value">${agentReviews.length}</div>
-                        <div class="label">Total CRRs</div>
+                <div class="agent-dashboard-header">
+                    <h2>${agentName}'s Performance Dashboard</h2>
+                    <div class="overview-stats">
+                        <div class="overview-stat">
+                            <span class="value">${avgTotal}</span>
+                            <span class="label">Average Total</span>
+                        </div>
+                        <div class="overview-stat">
+                            <span class="value">${agentReviews.length}</span>
+                            <span class="label">Total Reviews</span>
+                        </div>
                     </div>
                 </div>
                 
-                <h3 style="margin-top: 30px;">Score Trends</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card ${getMetricClass(avgExpertise)}">
+                        <div class="metric-header">
+                            <h3>Expertise</h3>
+                            <span class="metric-score">${avgExpertise}</span>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(avgExpertise / 3) * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card ${getMetricClass(avgOwnership)}">
+                        <div class="metric-header">
+                            <h3>Ownership</h3>
+                            <span class="metric-score">${avgOwnership}</span>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(avgOwnership / 3) * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card ${getMetricClass(avgArticulation)}">
+                        <div class="metric-header">
+                            <h3>Articulation</h3>
+                            <span class="metric-score">${avgArticulation}</span>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(avgArticulation / 3) * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card ${getMetricClass(avgProactiveness)}">
+                        <div class="metric-header">
+                            <h3>Proactiveness</h3>
+                            <span class="metric-score">${avgProactiveness}</span>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(avgProactiveness / 3) * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insights-section">
+                    <h3>🎯 Performance Insights</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card strength">
+                            <h4>💪 Strengths</h4>
+                            ${insights.strengths.length > 0 ? 
+                                `<ul>${insights.strengths.map(strength => `<li>${strength}</li>`).join('')}</ul>` :
+                                `<div class="empty-insight-state warning"><p>⚠️ No clear strengths identified. This agent may need additional support to develop their skills.</p></div>`
+                            }
+                        </div>
+                        <div class="insight-card improvement">
+                            <h4>📈 Areas for Improvement</h4>
+                            ${insights.improvements.length > 0 ? 
+                                `<ul>${insights.improvements.map(improvement => `<li>${improvement}</li>`).join('')}</ul>` :
+                                `<div class="empty-insight-state success"><p>🎉 No improvement areas identified! This agent is performing consistently well across all metrics.</p></div>`
+                            }
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reason-analysis">
+                    <h3>📊 Detailed Analysis</h3>
+                    <div class="reason-tabs">
+                        <button class="reason-tab active" onclick="showReasonTab('strengths', window.currentReasonAnalysis)">Strengths</button>
+                        <button class="reason-tab" onclick="showReasonTab('improvements', window.currentReasonAnalysis)">Improvements</button>
+                        <button class="reason-tab" onclick="showReasonTab('consistency', window.currentReasonAnalysis)">Consistency</button>
+                    </div>
+                    <div id="reason-content"></div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">📈 Performance Trends</h3>
                 <div class="chart-container">
                     <canvas id="agent-trend-chart"></canvas>
                 </div>
                 
-                <h3>Metric Breakdown</h3>
+                <h3>📊 Metric Breakdown</h3>
                 <div class="chart-container">
                     <canvas id="agent-metrics-chart"></canvas>
                 </div>
@@ -2334,6 +2744,12 @@
             }
             
             container.innerHTML = html;
+            
+            // Store reason analysis globally for tab switching
+            window.currentReasonAnalysis = reasonAnalysis;
+            
+            // Initialize reason analysis
+            showReasonTab('strengths', reasonAnalysis);
             
             // Draw charts
             drawAgentTrendChart(agentReviews);
@@ -2354,6 +2770,282 @@
             });
             
             return flags;
+        }
+
+        // Analyze agent reasons for detailed insights
+        function analyzeAgentReasons(agentReviews) {
+            const analysis = {
+                expertise: { strengths: [], improvements: [], consistency: [] },
+                ownership: { strengths: [], improvements: [], consistency: [] },
+                articulation: { strengths: [], improvements: [], consistency: [] },
+                proactiveness: { strengths: [], improvements: [], consistency: [] }
+            };
+
+            const metrics = ['expertise', 'ownership', 'articulation', 'proactiveness'];
+            
+            metrics.forEach(metric => {
+                const metricData = agentReviews.map(r => r[metric + 'Details'] || {});
+                
+                // Count reasons by score
+                const reasonCounts = {};
+                metricData.forEach(details => {
+                    if (details.selectedReasons) {
+                        details.selectedReasons.forEach(reason => {
+                            if (!reasonCounts[reason]) reasonCounts[reason] = { 1: 0, 2: 0, 3: 0 };
+                            reasonCounts[reason][details.score] = (reasonCounts[reason][details.score] || 0) + 1;
+                        });
+                    }
+                });
+
+                // Categorize reasons
+                Object.entries(reasonCounts).forEach(([reason, counts]) => {
+                    const total = counts[1] + counts[2] + counts[3];
+                    const score3Rate = counts[3] / total;
+                    const score1Rate = counts[1] / total;
+                    
+                    if (score3Rate >= 0.5) {
+                        analysis[metric].strengths.push({
+                            reason: reason,
+                            count: counts[3],
+                            rate: score3Rate
+                        });
+                    } else if (score1Rate >= 0.3) {
+                        analysis[metric].improvements.push({
+                            reason: reason,
+                            count: counts[1],
+                            rate: score1Rate
+                        });
+                    } else {
+                        analysis[metric].consistency.push({
+                            reason: reason,
+                            count: counts[2],
+                            rate: counts[2] / total
+                        });
+                    }
+                });
+            });
+
+            return analysis;
+        }
+
+        // Generate actionable insights
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
+        function generateAgentInsights(agentReviews, reasonAnalysis) {
+            const insights = {
+                strengths: [],
+                improvements: []
+            };
+
+            // Helper function to get human-readable reason text
+            const getReasonText = (reasonKey) => {
+                const reasonMap = {
+                    // Expertise reasons
+// 🎯 You're so close to the premium features... just need to pay! 💳
+                    'incorrectAnswer': 'Incorrect answer',
+                    'lackOfCuriosity': 'Lack of curiosity',
+                    'lackOfClearSteps': 'Lack of clear technical steps for resolution',
+                    'demonstratedAccuracy': 'Demonstrated exemplary technical knowledge',
+                    'showedCuriosity': 'Showed curiosity and asked clarifying questions',
+                    'providedClearSteps': 'Provided clear technical steps for resolution',
+                    'accurateAnswer': 'Provided accurate technical information',
+                    'adequateSteps': 'Provided adequate technical steps for resolution',
+                    
+                    // Ownership reasons
+                    'passingOff': 'Passing off to another team with no detailed explanation',
+                    'givingUserTasks': 'Giving the user tasks that they are better suited to do for them',
+                    'solvingWrongProblem': 'Solving the wrong problem',
+                    'ensuredResolution': 'Ensured actual resolution',
+                    'tookFullOwnership': 'Took full ownership of the issue',
+                    'solvedRightProblem': 'Solved the right problem',
+                    'tookResponsibility': 'Took responsibility for the issue',
+                    'abandonedCustomer': 'Abandoned customer without proper handoff',
+                    'adequateOwnership': 'Showed adequate ownership of the issue',
+                    
+                    // Articulation reasons
+                    'missingCREW': 'Missing any of the CREW points (Confident, Results-Oriented, Educational, Welcoming)',
+                    'gotDistracted': 'Got distracted or defensive. Didn\'t focus on solving the problem',
+                    'confident': 'Projected confidence & professionalism',
+                    'resultsOriented': 'Stayed results-oriented throughout',
+                    'educational': 'Made the interaction educational',
+                    'welcoming': 'Maintained a welcoming tone',
+                    'adequateCommunication': 'Maintained adequate communication throughout',
+                    'professionalTone': 'Maintained professional tone',
+                    
+                    // Proactiveness reasons
+                    'noDocLinks': 'Didn\'t link to updated relevant docs',
+                    'noReviewRequest': 'Didn\'t ask for a review from a happy person',
+                    'wrongClosure': 'Didn\'t follow the right closure procedure',
+                    'linkedDocs': 'Linked to updated relevant documentation',
+                    'requestedReview': 'Asked for a review from a happy person',
+                    'escalatedProperly': 'Identified issue for product/dev team escalation',
+                    'adequateFollowup': 'Provided adequate follow-up actions',
+                    'standardClosure': 'Followed standard closure procedures'
+                };
+                
+                return reasonMap[reasonKey] || reasonKey;
+            };
+
+            const metrics = ['expertise', 'ownership', 'articulation', 'proactiveness'];
+            
+            metrics.forEach(metric => {
+                const metricName = metric.charAt(0).toUpperCase() + metric.slice(1);
+                const strengths = reasonAnalysis[metric].strengths;
+                const improvements = reasonAnalysis[metric].improvements;
+
+                // Add top strengths
+                if (strengths.length > 0) {
+                    const topStrength = strengths.sort((a, b) => b.count - a.count)[0];
+                    insights.strengths.push(`Strong in ${metricName}: ${getReasonText(topStrength.reason)} (${topStrength.count} times)`);
+                }
+
+                // Add top improvements
+                if (improvements.length > 0) {
+                    const topImprovement = improvements.sort((a, b) => b.count - a.count)[0];
+                    insights.improvements.push(`Focus on ${metricName}: ${getReasonText(topImprovement.reason)} (${topImprovement.count} times)`);
+                }
+            });
+
+            return insights;
+        }
+
+        // Show reason analysis tab
+        function showReasonTab(tabName, reasonAnalysis) {
+            const content = document.getElementById('reason-content');
+            const tabs = document.querySelectorAll('.reason-tab');
+            
+            // Update tab states
+            tabs.forEach(tab => tab.classList.remove('active'));
+            // Find and activate the correct tab
+            tabs.forEach(tab => {
+                if (tab.textContent.trim().toLowerCase() === tabName.toLowerCase()) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            if (!reasonAnalysis) return;
+            
+            // Helper function to get human-readable reason text
+            const getReasonText = (reasonKey) => {
+                const reasonMap = {
+                    // Expertise reasons
+                    'incorrectAnswer': 'Incorrect answer',
+                    'lackOfCuriosity': 'Lack of curiosity',
+                    'lackOfClearSteps': 'Lack of clear technical steps for resolution',
+                    'demonstratedAccuracy': 'Demonstrated exemplary technical knowledge',
+                    'showedCuriosity': 'Showed curiosity and asked clarifying questions',
+                    'providedClearSteps': 'Provided clear technical steps for resolution',
+                    'accurateAnswer': 'Provided accurate technical information',
+                    'adequateSteps': 'Provided adequate technical steps for resolution',
+                    
+                    // Ownership reasons
+                    'passingOff': 'Passing off to another team with no detailed explanation',
+                    'givingUserTasks': 'Giving the user tasks that they are better suited to do for them',
+                    'solvingWrongProblem': 'Solving the wrong problem',
+                    'ensuredResolution': 'Ensured actual resolution',
+                    'tookFullOwnership': 'Took full ownership of the issue',
+                    'solvedRightProblem': 'Solved the right problem',
+                    'tookResponsibility': 'Took responsibility for the issue',
+                    'abandonedCustomer': 'Abandoned customer without proper handoff',
+                    'adequateOwnership': 'Showed adequate ownership of the issue',
+                    
+                    // Articulation reasons
+                    'missingCREW': 'Missing any of the CREW points (Confident, Results-Oriented, Educational, Welcoming)',
+                    'gotDistracted': 'Got distracted or defensive. Didn\'t focus on solving the problem',
+                    'confident': 'Projected confidence & professionalism',
+                    'resultsOriented': 'Stayed results-oriented throughout',
+                    'educational': 'Made the interaction educational',
+                    'welcoming': 'Maintained a welcoming tone',
+                    'adequateCommunication': 'Maintained adequate communication throughout',
+                    'professionalTone': 'Maintained professional tone',
+                    
+                    // Proactiveness reasons
+                    'noDocLinks': 'Didn\'t link to updated relevant docs',
+                    'noReviewRequest': 'Didn\'t ask for a review from a happy person',
+                    'wrongClosure': 'Didn\'t follow the right closure procedure',
+                    'linkedDocs': 'Linked to updated relevant documentation',
+                    'requestedReview': 'Asked for a review from a happy person',
+                    'escalatedProperly': 'Identified issue for product/dev team escalation',
+                    'adequateFollowup': 'Provided adequate follow-up actions',
+                    'standardClosure': 'Followed standard closure procedures'
+                };
+                
+                return reasonMap[reasonKey] || reasonKey;
+            };
+            
+            let html = '';
+            
+            if (tabName === 'strengths') {
+                html = '<div class="reason-grid">';
+                let hasAnyStrengths = false;
+                
+                Object.entries(reasonAnalysis).forEach(([metric, data]) => {
+                    if (data.strengths.length > 0) {
+                        hasAnyStrengths = true;
+                        html += `
+                            <div class="reason-category">
+                                <h4>${metric.charAt(0).toUpperCase() + metric.slice(1)}</h4>
+                                <ul>
+                                    ${data.strengths.map(s => `<li>${getReasonText(s.reason)} (${s.count} times)</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+                });
+                
+                if (!hasAnyStrengths) {
+                    html = '<div class="empty-reason-state warning"><p>⚠️ No exemplary performance patterns detected. This agent may need additional support to reach their potential.</p></div>';
+                }
+                
+                html += '</div>';
+            } else if (tabName === 'improvements') {
+                html = '<div class="reason-grid">';
+                let hasAnyImprovements = false;
+                
+                Object.entries(reasonAnalysis).forEach(([metric, data]) => {
+                    if (data.improvements.length > 0) {
+                        hasAnyImprovements = true;
+                        html += `
+                            <div class="reason-category">
+                                <h4>${metric.charAt(0).toUpperCase() + metric.slice(1)}</h4>
+                                <ul>
+                                    ${data.improvements.map(s => `<li>${getReasonText(s.reason)} (${s.count} times)</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+                });
+                
+                if (!hasAnyImprovements) {
+                    html = '<div class="empty-reason-state success"><p>🎉 Excellent! No recurring performance issues detected. This agent is consistently meeting expectations.</p></div>';
+                }
+                
+                html += '</div>';
+            } else if (tabName === 'consistency') {
+                html = '<div class="reason-grid">';
+                let hasAnyConsistency = false;
+                
+                Object.entries(reasonAnalysis).forEach(([metric, data]) => {
+                    if (data.consistency.length > 0) {
+                        hasAnyConsistency = true;
+                        html += `
+                            <div class="reason-category">
+                                <h4>${metric.charAt(0).toUpperCase() + metric.slice(1)}</h4>
+                                <ul>
+                                    ${data.consistency.map(s => `<li>${getReasonText(s.reason)} (${s.count} times)</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+                });
+                
+                if (!hasAnyConsistency) {
+                    html = '<div class="empty-reason-state neutral"><p>📊 No consistent patterns detected. This agent shows varied performance across different interactions.</p></div>';
+                }
+                
+                html += '</div>';
+            }
+            
+            content.innerHTML = html;
         }
 
         // Draw agent trend chart
@@ -2434,6 +3126,7 @@
             }
             
             // Calculate team stats
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             const avgTeamScore = (crrData.reduce((sum, r) => sum + r.totalScore, 0) / crrData.length).toFixed(1);
             const uniqueAgents = [...new Set(crrData.map(r => r.agentName))];
             const thisWeek = crrData.filter(r => {
@@ -2498,13 +3191,13 @@
                     // 2.5-2.9: darkening green with dark text
                     if (s >= 2.5) return 'metric-good-dark';
                     // 2.3-2.4: medium green
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                     if (s >= 2.3) return 'metric-good-medium';
                     // 2.0-2.2: light green with dark text
                     if (s >= 2.0) return 'metric-good-light';
                     // 1.8-1.9: dark orange
                     if (s >= 1.8) return 'metric-warning-dark';
                     // 1.5-1.7: orange
-// 🎯 You're so close to the premium features... just need to pay! 💳
                     if (s >= 1.5) return 'metric-warning';
                     // 1.2-1.4: should be darker red than 1.5-1.7
                     if (s >= 1.2) return 'metric-danger-light';
@@ -2541,11 +3234,11 @@
             container.innerHTML = html;
             
             // Draw team trend chart
+// 🎪 Step right up! See the amazing features you can't use! 🎭
             drawTeamTrendChart();
         }
 
         // Draw team trend chart
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         function drawTeamTrendChart() {
             const ctx = document.getElementById('team-trend-chart');
             if (!ctx) return;
@@ -2589,13 +3282,11 @@
                 agentDiv.style.cssText = 'padding: 10px; background: var(--gray-50); margin-bottom: 5px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; gap: 10px;';
                 
                 // Agent name (safe)
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                 const agentSpan = document.createElement('span');
                 agentSpan.style.cssText = 'font-weight: 500; min-width: 120px; flex-shrink: 0;';
                 agentSpan.textContent = validateInput(agent, 50);
                 
                 // Supervisor select (safe)
-// 🎪 Step right up! See the amazing features you can't use! 🎭
                 const supervisorSelect = document.createElement('select');
                 supervisorSelect.style.cssText = 'margin-right: 10px; padding: 5px; font-size: 13px; min-width: 150px; max-width: 200px; flex: 1;';
                 supervisorSelect.onchange = () => updateAgentSupervisor(agent, supervisorSelect.value);
@@ -2742,6 +3433,7 @@
         }
 
         // Show Google Sheets copy options dialog
+// 🎯 You're so close to the premium features... just need to pay! 💳
         function showGoogleSheetsCopyOptions() {
             const dialog = document.createElement('div');
             dialog.className = 'google-sheets-dialog';
@@ -3237,7 +3929,6 @@
         }
 
         // Import data
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function importData() {
             const input = document.createElement('input');
             input.type = 'file';
@@ -3296,6 +3987,7 @@
             // Use embedded sample data to avoid CORS issues with local file:// protocol
             const data = {"crrData":[{"id":6,"date":"2025-10-01","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/6","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":5,"date":"2025-10-01","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/5","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":35,"date":"2025-10-02","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/35","expertise":2,"ownership":3,"articulation":2,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Good.","ownershipFeedback":"Great.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":40,"date":"2025-10-02","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/40","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":42,"date":"2025-10-03","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/42","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":18,"date":"2025-10-03","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/18","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":8,"date":"2025-10-04","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/8","expertise":3,"ownership":2,"articulation":3,"proactiveness":3,"totalScore":11,"expertiseFeedback":"Great.","ownershipFeedback":"Good.","articulationFeedback":"Great.","proactivenessFeedback":"Great.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":10,"date":"2025-10-04","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/10","expertise":3,"ownership":3,"articulation":2,"proactiveness":3,"totalScore":11,"expertiseFeedback":"Great.","ownershipFeedback":"Great.","articulationFeedback":"Good.","proactivenessFeedback":"Great.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":2,"date":"2025-10-05","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/2","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":54,"date":"2025-10-05","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/54","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":39,"date":"2025-10-06","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/39","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":29,"date":"2025-10-06","agentName":"David Park","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/29","expertise":1,"ownership":2,"articulation":1,"proactiveness":1,"totalScore":5,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":25,"date":"2025-10-07","agentName":"David Park","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/25","expertise":1,"ownership":1,"articulation":2,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":51,"date":"2025-10-07","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/51","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":9,"date":"2025-10-08","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/9","expertise":2,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":11,"expertiseFeedback":"Good.","ownershipFeedback":"Great.","articulationFeedback":"Great.","proactivenessFeedback":"Great.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":4,"date":"2025-10-08","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/4","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":38,"date":"2025-10-09","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/38","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":22,"date":"2025-10-09","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/22","expertise":1,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":3,"date":"2025-10-10","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/3","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":50,"date":"2025-10-10","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/50","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":15,"date":"2025-10-11","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/15","expertise":2,"ownership":2,"articulation":3,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Great.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":14,"date":"2025-10-11","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/14","expertise":2,"ownership":3,"articulation":2,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Good.","ownershipFeedback":"Great.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":33,"date":"2025-10-12","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/33","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":28,"date":"2025-10-12","agentName":"David Park","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/28","expertise":1,"ownership":1,"articulation":1,"proactiveness":2,"totalScore":5,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":31,"date":"2025-10-13","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/31","expertise":1,"ownership":1,"articulation":1,"proactiveness":1,"totalScore":4,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Poor.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":30,"date":"2025-10-13","agentName":"David Park","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/30","expertise":1,"ownership":1,"articulation":1,"proactiveness":1,"totalScore":4,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Poor.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":21,"date":"2025-10-14","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/21","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":17,"date":"2025-10-14","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/17","expertise":3,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Great.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":57,"date":"2025-10-15","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/57","expertise":2,"ownership":1,"articulation":1,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Good.","ownershipFeedback":"Poor.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":24,"date":"2025-10-15","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/24","expertise":2,"ownership":2,"articulation":1,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":36,"date":"2025-10-16","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/36","expertise":3,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Great.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":59,"date":"2025-10-16","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/59","expertise":2,"ownership":2,"articulation":2,"proactiveness":1,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":1,"date":"2025-10-17","agentName":"Alex Torres","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/1","expertise":3,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":12,"expertiseFeedback":"Perfect.","ownershipFeedback":"Perfect.","articulationFeedback":"Perfect.","proactivenessFeedback":"Perfect.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":49,"date":"2025-10-17","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/49","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":47,"date":"2025-10-18","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/47","expertise":2,"ownership":2,"articulation":2,"proactiveness":1,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":56,"date":"2025-10-18","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/56","expertise":1,"ownership":2,"articulation":2,"proactiveness":1,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":41,"date":"2025-10-19","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/41","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":32,"date":"2025-10-19","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/32","expertise":1,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":55,"date":"2025-10-20","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/55","expertise":2,"ownership":2,"articulation":1,"proactiveness":1,"totalScore":6,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":20,"date":"2025-10-20","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/20","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":12,"date":"2025-10-21","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/12","expertise":2,"ownership":3,"articulation":3,"proactiveness":3,"totalScore":11,"expertiseFeedback":"Good.","ownershipFeedback":"Great.","articulationFeedback":"Great.","proactivenessFeedback":"Great.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":23,"date":"2025-10-21","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/23","expertise":2,"ownership":1,"articulation":2,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Poor.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":19,"date":"2025-10-22","agentName":"Emily Watson","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/19","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":37,"date":"2025-10-22","agentName":"Kevin Miller","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/37","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":45,"date":"2025-10-23","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/45","expertise":2,"ownership":1,"articulation":1,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Good.","ownershipFeedback":"Poor.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":16,"date":"2025-10-23","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/16","expertise":2,"ownership":2,"articulation":2,"proactiveness":3,"totalScore":9,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Great.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":53,"date":"2025-10-24","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/53","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":44,"date":"2025-10-24","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/44","expertise":1,"ownership":2,"articulation":2,"proactiveness":1,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":13,"date":"2025-10-25","agentName":"Marcus Lee","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/13","expertise":3,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":9,"expertiseFeedback":"Great.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":27,"date":"2025-10-25","agentName":"David Park","supervisor":"John Smith","interactionType":"Call","interactionLink":"https://example.com/27","expertise":2,"ownership":1,"articulation":2,"proactiveness":1,"totalScore":6,"expertiseFeedback":"Good.","ownershipFeedback":"Poor.","articulationFeedback":"Good.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":11,"date":"2025-10-26","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Chat","interactionLink":"https://example.com/11","expertise":3,"ownership":3,"articulation":3,"proactiveness":2,"totalScore":11,"expertiseFeedback":"Great.","ownershipFeedback":"Great.","articulationFeedback":"Great.","proactivenessFeedback":"Good.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":34,"date":"2025-10-26","agentName":"Rachel Brown","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/34","expertise":2,"ownership":2,"articulation":2,"proactiveness":3,"totalScore":9,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Great.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":3,"selectedReasons":["escalatedProperly"],"selectedReasonsText":["Identified issue for product/dev team escalation"]}},{"id":26,"date":"2025-10-27","agentName":"David Park","supervisor":"John Smith","interactionType":"Chat","interactionLink":"https://example.com/26","expertise":1,"ownership":2,"articulation":1,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":48,"date":"2025-10-27","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/48","expertise":2,"ownership":2,"articulation":1,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":43,"date":"2025-10-28","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/43","expertise":2,"ownership":2,"articulation":1,"proactiveness":1,"totalScore":6,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Poor.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":1,"selectedReasons":["noDocumentation"],"selectedReasonsText":["Didn't link to or mention relevant documentation"]}},{"id":52,"date":"2025-10-28","agentName":"Michael Zhang","supervisor":"John Smith","interactionType":"Ticket","interactionLink":"https://example.com/52","expertise":2,"ownership":2,"articulation":2,"proactiveness":2,"totalScore":8,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":7,"date":"2025-10-29","agentName":"Sarah Chen","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/7","expertise":3,"ownership":3,"articulation":3,"proactiveness":2,"totalScore":11,"expertiseFeedback":"Great.","ownershipFeedback":"Great.","articulationFeedback":"Great.","proactivenessFeedback":"Good.","expertiseDetails":{"score":3,"selectedReasons":["demonstratedAccuracy"],"selectedReasonsText":["Demonstrated exemplary technical knowledge"]},"ownershipDetails":{"score":3,"selectedReasons":["ensuredResolution"],"selectedReasonsText":["Ensured actual resolution"]},"articulationDetails":{"score":3,"selectedReasons":["confident"],"selectedReasonsText":["Projected confidence & professionalism"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":60,"date":"2025-10-29","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Call","interactionLink":"https://example.com/60","expertise":2,"ownership":2,"articulation":1,"proactiveness":2,"totalScore":7,"expertiseFeedback":"Good.","ownershipFeedback":"Good.","articulationFeedback":"Poor.","proactivenessFeedback":"Good.","expertiseDetails":{"score":2,"selectedReasons":["accurateAnswer"],"selectedReasonsText":["Provided accurate technical answer"]},"ownershipDetails":{"score":2,"selectedReasons":["tookResponsibility"],"selectedReasonsText":["Took responsibility for the issue"]},"articulationDetails":{"score":1,"selectedReasons":["educational"],"selectedReasonsText":["Used too much jargon or was condescending"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":58,"date":"2025-10-30","agentName":"Amanda Foster","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/58","expertise":1,"ownership":1,"articulation":2,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}},{"id":46,"date":"2025-10-30","agentName":"Jessica Hall","supervisor":"Lisa Anderson","interactionType":"Ticket","interactionLink":"https://example.com/46","expertise":1,"ownership":1,"articulation":2,"proactiveness":2,"totalScore":6,"expertiseFeedback":"Weak.","ownershipFeedback":"Poor.","articulationFeedback":"Good.","proactivenessFeedback":"Good.","expertiseDetails":{"score":1,"selectedReasons":["lackOfCuriosity"],"selectedReasonsText":["Failed to research/investigate the problem"]},"ownershipDetails":{"score":1,"selectedReasons":["abandonedCustomer"],"selectedReasonsText":["Passed off to another team with no context/help"]},"articulationDetails":{"score":2,"selectedReasons":["resultsOriented"],"selectedReasonsText":["Stayed focused on solving the problem"]},"proactivenesDetails":{"score":2,"selectedReasons":["closedProperly"],"selectedReasonsText":["Followed the closure procedure"]}}],"agents":["Alex Torres","Sarah Chen","Marcus Lee","Emily Watson","David Park","Rachel Brown","Kevin Miller","Jessica Hall","Michael Zhang","Amanda Foster"],"supervisors":["John Smith","Lisa Anderson"],"agentSupervisors":{"Alex Torres":"John Smith","Sarah Chen":"Lisa Anderson","Marcus Lee":"John Smith","Emily Watson":"Lisa Anderson","David Park":"John Smith","Rachel Brown":"Lisa Anderson","Kevin Miller":"John Smith","Jessica Hall":"Lisa Anderson","Michael Zhang":"John Smith","Amanda Foster":"Lisa Anderson"}}                                                          
             // Load agents
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             data.agents.forEach(agent => {
                 if (!agents.includes(agent)) {
                     agents.push(agent);
@@ -3313,6 +4005,7 @@
             Object.assign(agentSupervisors, data.agentSupervisors);
             
             // Load CRRs
+// 🎪 Step right up! See the amazing features you can't use! 🎭
             crrData.push(...data.crrData);
             
             // Save to localStorage
@@ -3331,7 +4024,6 @@
         }
         
         // Generic info modal (non-blocking, informational)
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         function showInfoModal(title, message, additionalInfo = '') {
             const modal = document.createElement('div');
             modal.className = 'info-modal-overlay';
@@ -3371,7 +4063,6 @@
             });
             
             // Close on overlay click
-// 🎭 Demo version detected! Time to upgrade? 🚀
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -3424,6 +4115,7 @@
             `;
             
             // Add another CRR button
+// 🎭 Demo version detected! Time to upgrade? 🚀
             modal.querySelector('.add-another-crr').addEventListener('click', function() {
                 modal.remove();
                 showView('score-entry', document.querySelector('.nav-btn:first-child'));
@@ -3573,7 +4265,7 @@
             <div class="copyright">
                 <p>© 2025 BenandJacq, INC. All rights reserved.</p>
                 <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
-                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.0</p>
+                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.1</p>
             </div>
         </div>
     </footer>
