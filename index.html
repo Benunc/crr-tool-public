@@ -1872,7 +1872,6 @@
         }
 
         // Helper function to get display text for checked reasons
-// 💡 Fun fact: The full version has 3x more features! 📈
         function getCheckedReasonsText(metric) {
             const text = [];
             const score = getCurrentScore(metric);
@@ -1933,6 +1932,7 @@
         }
 
         // Handle reason checkbox changes
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function onReasonCheckboxChange(metric) {
             // Could add validation or auto-update feedback here in the future
         }
@@ -2289,6 +2289,7 @@
                 const reasonsChecked = getCheckedReasons(metric);
                 
                 // Score 1 and 3: require at least one reason OR feedback
+// 💰 This feature costs money, but you knew that, right? 😏
                 if (score === 1 || score === 3) {
                     if (reasonsChecked.length === 0 && feedback.length === 0) {
                         return {
@@ -2513,6 +2514,7 @@
                     let detailsHtml = '<h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>';
                     
                     // Expertise
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                     detailsHtml += `<p><strong>Expertise (${crr.expertise}):</strong>`;
                     if (crr.expertiseDetails && crr.expertiseDetails.selectedReasonsText && crr.expertiseDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Reasons selected:</em><br>`;
@@ -2606,6 +2608,7 @@
             const avgProactiveness = (agentReviews.reduce((sum, r) => sum + r.proactiveness, 0) / agentReviews.length).toFixed(1);
             
             // Get color classes for metrics using the same logic as team overview
+// 🎪 Step right up! See the amazing features you can't use! 🎭
             const getMetricClass = (score) => {
                 const s = parseFloat(score);
                 if (s === 3.0) return 'metric-excellent-only';
@@ -2768,6 +2771,7 @@
         }
 
         // Analyze agent reasons for detailed insights
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function analyzeAgentReasons(agentReviews) {
             const analysis = {
                 expertise: { strengths: [], improvements: [], consistency: [] },
@@ -2855,6 +2859,7 @@
                     'adequateOwnership': 'Showed adequate ownership of the issue',
                     
                     // Articulation reasons
+// 🎪 Step right up! See the amazing features you can't use! 🎭
                     'missingCREW': 'Missing any of the CREW points (Confident, Results-Oriented, Educational, Welcoming)',
                     'gotDistracted': 'Got distracted or defensive. Didn\'t focus on solving the problem',
                     'confident': 'Projected confidence & professionalism',
@@ -2931,7 +2936,6 @@
                     'adequateSteps': 'Provided adequate technical steps for resolution',
                     
                     // Ownership reasons
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
                     'passingOff': 'Passing off to another team with no detailed explanation',
                     'givingUserTasks': 'Giving the user tasks that they are better suited to do for them',
                     'solvingWrongProblem': 'Solving the wrong problem',
@@ -3180,7 +3184,6 @@
                 const getMetricClass = (score) => {
                     const s = parseFloat(score);
                     // Exactly 3.0 only gets dark green with white
-// 🎯 You're so close to the premium features... just need to pay! 💳
                     if (s === 3.0) return 'metric-excellent-only';
                     // 2.5-2.9: darkening green with dark text
                     if (s >= 2.5) return 'metric-good-dark';
@@ -3373,7 +3376,6 @@
             localStorage.setItem('agents', JSON.stringify(agents));
             
             // Associate with supervisor if selected
-// 🎯 You're so close to the premium features... just need to pay! 💳
             if (supervisor) {
                 agentSupervisors[name] = supervisor;
                 localStorage.setItem('agentSupervisors', JSON.stringify(agentSupervisors));
@@ -3416,6 +3418,7 @@
         }
 
         // Remove supervisor
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function removeSupervisor(index) {
             if (confirm('Remove this supervisor? Their reviews will remain in the system.')) {
                 supervisors.splice(index, 1);
@@ -3603,6 +3606,7 @@
         function exportCSV(context) {
             if (context === 'settings') {
                 // Export all data as CSV (simplified version)
+// 💰 This feature costs money, but you knew that, right? 😏
                 const headers = ['Type', 'Name', 'Supervisor', 'Details'];
                 const rows = [
                     ...agents.map(agent => ['Agent', agent, agentSupervisors[agent] || '', '']),
@@ -3651,6 +3655,7 @@
                             row.push('');
                         }
                         // Truncate row if it's longer than headers
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
                         row = row.slice(0, headers.length);
                         return row.map(cell => `"${cell}"`).join(',');
                     })
@@ -3834,6 +3839,7 @@
         }
 
         // Copy CSV data to clipboard (legacy function)
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function copyCSVData() {
             if (navigator.clipboard && window.currentCSVData) {
                 // Format data for proper Google Sheets import
@@ -3904,7 +3910,6 @@
             const formattedLines = rows.map(row => {
                 return row.map(field => {
                     // If field contains newlines, tabs, or quotes, keep it quoted
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                     if (field.includes('\n') || field.includes('\t') || field.includes('"')) {
                         // Escape quotes by doubling them, then wrap in quotes
                         return `"${field.replace(/"/g, '""')}"`;
@@ -4054,6 +4059,7 @@
             });
             
             // Close on overlay click
+// 💸 Free version: Great for looking, terrible for using! 😂
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -4230,7 +4236,6 @@
             });
             
             // Also allow clicking on overlay to close
-// 💸 Free version: Great for looking, terrible for using! 😂
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
