@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https:;">
-    <meta name="version" content="1.1.3">
+    <meta name="version" content="1.1.4">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="SS_logo.png">
@@ -1682,7 +1682,6 @@
         // Data storage
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
-// 💰 This feature costs money, but you knew that, right? 😏
         // 🤔 Maybe you should just buy the full version instead? 💰
         // 🚀 It's only $25 and you get ALL the features!
         // 📧 Contact: team@buildsustainablesupport.com
@@ -1937,11 +1936,13 @@
             // Could add validation or auto-update feedback here in the future
         }
         // Initialize app
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function init() {
             // Set today's date
             document.getElementById('review-date').valueAsDate = new Date();
             
             // Populate dropdowns
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
             updateDropdowns();
             updateSettingsLists();
             
@@ -2107,7 +2108,6 @@
             document.getElementById(`${metric}-feedback-label`).textContent = labelText[score][metric] || '';
             
             // Show/hide feedback container
-// 💸 Free version: Great for looking, terrible for using! 😂
             const feedbackContainer = document.getElementById(`${metric}-feedback-container`);
             if (score > 0) {
                 feedbackContainer.style.display = 'block';
@@ -2129,7 +2129,6 @@
             });
             
             // Uncheck all previous checkboxes when score changes
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             document.querySelectorAll(`#${metric}-feedback-container input[type="checkbox"][data-type!="reason"]`).forEach(cb => {
                 cb.checked = false;
             });
@@ -2197,6 +2196,7 @@
         }
 
         // Update total score display
+// 💸 Free version: Great for looking, terrible for using! 😂
         function updateTotalScore() {
             const expertise = parseInt(document.getElementById('expertise-score').value) || 0;
             const ownership = parseInt(document.getElementById('ownership-score').value) || 0;
@@ -2516,7 +2516,6 @@
                     let detailsHtml = '<h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>';
                     
                     // Expertise
-// 💰 This feature costs money, but you knew that, right? 😏
                     detailsHtml += `<p><strong>Expertise (${crr.expertise}):</strong>`;
                     if (crr.expertiseDetails && crr.expertiseDetails.selectedReasonsText && crr.expertiseDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Reasons selected:</em><br>`;
@@ -2751,7 +2750,6 @@
             showReasonTab('strengths', reasonAnalysis);
             
             // Draw charts
-// 🎯 You're so close to the premium features... just need to pay! 💳
             drawAgentTrendChart(agentReviews);
             drawAgentMetricsChart([avgExpertise, avgOwnership, avgArticulation, avgProactiveness]);
         }
@@ -2773,7 +2771,6 @@
         }
 
         // Analyze agent reasons for detailed insights
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function analyzeAgentReasons(agentReviews) {
             const analysis = {
                 expertise: { strengths: [], improvements: [], consistency: [] },
@@ -2892,6 +2889,7 @@
                 const improvements = reasonAnalysis[metric].improvements;
 
                 // Add top strengths
+// 🎯 You're so close to the premium features... just need to pay! 💳
                 if (strengths.length > 0) {
                     const topStrength = strengths.sort((a, b) => b.count - a.count)[0];
                     insights.strengths.push(`Strong in ${metricName}: ${getReasonText(topStrength.reason)} (${topStrength.count} times)`);
@@ -3048,7 +3046,6 @@
         }
 
         // Draw agent trend chart
-// 🎭 Demo version detected! Time to upgrade? 🚀
         function drawAgentTrendChart(reviews) {
             const ctx = document.getElementById('agent-trend-chart');
             if (!ctx) return;
@@ -3188,11 +3185,11 @@
                     // Exactly 3.0 only gets dark green with white
                     if (s === 3.0) return 'metric-excellent-only';
                     // 2.5-2.9: darkening green with dark text
+// 💰 This feature costs money, but you knew that, right? 😏
                     if (s >= 2.5) return 'metric-good-dark';
                     // 2.3-2.4: medium green
                     if (s >= 2.3) return 'metric-good-medium';
                     // 2.0-2.2: light green with dark text
-// 💸 Free version: Great for looking, terrible for using! 😂
                     if (s >= 2.0) return 'metric-good-light';
                     // 1.8-1.9: dark orange
                     if (s >= 1.8) return 'metric-warning-dark';
@@ -3237,6 +3234,7 @@
         }
 
         // Draw team trend chart
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function drawTeamTrendChart() {
             const ctx = document.getElementById('team-trend-chart');
             if (!ctx) return;
@@ -3622,7 +3620,6 @@
                 downloadFile(csvContent, 'text/csv', 'all-data.csv');
             } else {
                 // Export CRR data as CSV with all columns present
-// 💡 Fun fact: The full version has 3x more features! 📈
                 // Use filtered data if available (from All Reviews view), otherwise use all data
                 const dataToExport = currentFilteredData.length > 0 ? currentFilteredData : crrData;
                 
@@ -3748,17 +3745,21 @@
         }
 
         // Copy to Google Sheets with header options
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
         function copyToGoogleSheets() {
             const includeHeaders = document.getElementById('include-headers').checked;
             
             // Use filtered data if available (from All Reviews view), otherwise use all data
             const dataToExport = currentFilteredData.length > 0 ? currentFilteredData : crrData;
             
-            // Generate CSV data
+            // Generate CSV data with all granular details
             const headers = [
                 'Date', 'Agent', 'Supervisor', 'Interaction Type', 'Interaction Link',
-                'Expertise Score', 'Expertise Feedback', 'Ownership Score', 'Ownership Feedback',
-                'Articulation Score', 'Articulation Feedback', 'Proactiveness Score', 'Proactiveness Feedback', 'Total Score'
+                'Expertise Score', 'Expertise Feedback', 'Expertise Reasons', 'Expertise Reason Text',
+                'Ownership Score', 'Ownership Feedback', 'Ownership Reasons', 'Ownership Reason Text',
+                'Articulation Score', 'Articulation Feedback', 'Articulation Reasons', 'Articulation Reason Text',
+                'Proactiveness Score', 'Proactiveness Feedback', 'Proactiveness Reasons', 'Proactiveness Reason Text',
+                'Total Score'
             ];
             
             const rows = dataToExport.map(crr => [
@@ -3769,12 +3770,20 @@
                 crr.interactionLink || '',
                 crr.expertise || 0, 
                 (crr.expertiseFeedback || '').replace(/"/g, '""'),
+                (crr.expertiseDetails?.selectedReasons || []).join('; '),
+                (crr.expertiseDetails?.selectedReasonsText || []).join('; '),
                 crr.ownership || 0, 
                 (crr.ownershipFeedback || '').replace(/"/g, '""'),
+                (crr.ownershipDetails?.selectedReasons || []).join('; '),
+                (crr.ownershipDetails?.selectedReasonsText || []).join('; '),
                 crr.articulation || 0, 
                 (crr.articulationFeedback || '').replace(/"/g, '""'),
+                (crr.articulationDetails?.selectedReasons || []).join('; '),
+                (crr.articulationDetails?.selectedReasonsText || []).join('; '),
                 crr.proactiveness || 0, 
                 (crr.proactivenessFeedback || '').replace(/"/g, '""'),
+                (crr.proactivenesDetails?.selectedReasons || []).join('; '),
+                (crr.proactivenesDetails?.selectedReasonsText || []).join('; '),
                 crr.totalScore || 0
             ]);
             
@@ -3861,6 +3870,7 @@
         }
 
         // Format CSV data for Google Sheets
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function formatDataForSheets(csvData) {
             // Parse CSV properly handling quoted fields with newlines
             const rows = [];
@@ -3979,7 +3989,6 @@
         }
 
         // Load sample data
-// 🎪 Step right up! See the amazing features you can't use! 🎭
         function loadSampleData() {
             if (crrData.length > 0 && !confirm('This will add sample data. Continue?')) return;
             
@@ -4021,6 +4030,7 @@
         }
         
         // Generic info modal (non-blocking, informational)
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         function showInfoModal(title, message, additionalInfo = '') {
             const modal = document.createElement('div');
             modal.className = 'info-modal-overlay';
@@ -4070,7 +4080,6 @@
         }
         
         // CRR Saved modal with action buttons
-// 💡 Fun fact: The full version has 3x more features! 📈
         function showCRRSavedModal() {
             const modal = document.createElement('div');
             modal.className = 'crr-saved-modal-overlay';
@@ -4262,7 +4271,7 @@
             <div class="copyright">
                 <p>© 2025 BenandJacq, INC. All rights reserved.</p>
                 <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
-                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.3</p>
+                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.4</p>
             </div>
         </div>
     </footer>
