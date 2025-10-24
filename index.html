@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https:;">
-    <meta name="version" content="1.1.2">
+    <meta name="version" content="1.1.3">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="SS_logo.png">
@@ -1189,8 +1189,8 @@
         <nav>
             <button class="nav-btn active" onclick="showView('score-entry', this)">New CRR</button>
             <button class="nav-btn" onclick="showView('all-reviews', this)">All Reviews</button>
-            <button class="nav-btn" onclick="showDemoRestriction('dashboard')">Agent Dashboard</button>
-            <button class="nav-btn" onclick="showDemoRestriction('analytics')">Team Overview</button>
+            <button class="nav-btn" onclick="showView('agent-dashboard', this)">Agent Dashboard</button>
+            <button class="nav-btn" onclick="showView('team-overview', this)">Team Overview</button>
             <button class="nav-btn" onclick="showView('scoring-guide', this)">Scoring Guide</button>
             <button class="nav-btn" onclick="showView('settings', this)">Settings</button>
             <button class="nav-btn" onclick="showView('license', this)">License</button>
@@ -1651,6 +1651,7 @@
         // 🕵️‍♂️ You're like a digital detective, but without the paycheck! 💸
         // 💡 Pro tip: It's easier to just buy the product than to hack it! 🛒
         // 🎭 But hey, if you're having fun, keep going! Just... maybe buy it too? 😅
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function sanitizeHTML(str) {
             if (typeof str !== 'string') return '';
             const div = document.createElement('div');
@@ -1672,6 +1673,7 @@
 
         function safeInnerHTML(element, content) {
             // Use textContent for safety, or sanitize if HTML is needed
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             if (typeof content === 'string') {
                 element.innerHTML = sanitizeHTML(content);
             } else {
@@ -1680,6 +1682,7 @@
         }
 
         // Data storage
+// 💸 Free version: Great for looking, terrible for using! 😂
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
         // 🤔 Maybe you should just buy the full version instead? 💰
@@ -1692,6 +1695,7 @@
         // Agent-Supervisor associations: { agentName: supervisorName }
         let agentSupervisors = JSON.parse(localStorage.getItem('agentSupervisors')) || {};
         // Track currently filtered/displayed data for exports
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         let currentFilteredData = [];
 
         // Score hints
@@ -1932,7 +1936,6 @@
         }
 
         // Handle reason checkbox changes
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function onReasonCheckboxChange(metric) {
             // Could add validation or auto-update feedback here in the future
         }
@@ -2027,6 +2030,7 @@
                 localStorage.setItem('initialSetupComplete', 'true');
                 document.body.removeChild(dialog);
                 // Show Settings view and helpful tip
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                 setTimeout(() => {
                     showView('settings');
                     alert('👋 Welcome! First, add your agents and supervisors using the fields below. Then you can start scoring CRRs!');
@@ -2289,7 +2293,6 @@
                 const reasonsChecked = getCheckedReasons(metric);
                 
                 // Score 1 and 3: require at least one reason OR feedback
-// 💰 This feature costs money, but you knew that, right? 😏
                 if (score === 1 || score === 3) {
                     if (reasonsChecked.length === 0 && feedback.length === 0) {
                         return {
@@ -2361,6 +2364,7 @@
                 quickOptions.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                 
                 // Clear all reason checkbox containers
+// 💰 This feature costs money, but you knew that, right? 😏
                 ['1', '2', '3'].forEach(score => {
                     const reasonDiv = document.getElementById(`${metric}-reasons-${score}`);
                     if (reasonDiv) {
@@ -2401,6 +2405,7 @@
             }
             
             // Refresh data when switching views
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             if (viewId === 'all-reviews') renderReviewsTable();
             if (viewId === 'team-overview') renderTeamOverview();
         }
@@ -2514,7 +2519,6 @@
                     let detailsHtml = '<h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>';
                     
                     // Expertise
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                     detailsHtml += `<p><strong>Expertise (${crr.expertise}):</strong>`;
                     if (crr.expertiseDetails && crr.expertiseDetails.selectedReasonsText && crr.expertiseDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Reasons selected:</em><br>`;
@@ -2541,6 +2545,7 @@
                     detailsHtml += '</p>';
                     
                     // Articulation
+// 💸 Free version: Great for looking, terrible for using! 😂
                     detailsHtml += `<p><strong>Articulation (${crr.articulation}):</strong>`;
                     if (crr.articulationDetails && crr.articulationDetails.selectedReasonsText && crr.articulationDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Standards selected:</em><br>`;
@@ -2584,6 +2589,7 @@
         }
 
         // Update agent dashboard
+// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function updateAgentDashboard() {
             const agentName = document.getElementById('dashboard-agent').value;
             const container = document.getElementById('agent-dashboard-content');
@@ -2608,7 +2614,6 @@
             const avgProactiveness = (agentReviews.reduce((sum, r) => sum + r.proactiveness, 0) / agentReviews.length).toFixed(1);
             
             // Get color classes for metrics using the same logic as team overview
-// 🎪 Step right up! See the amazing features you can't use! 🎭
             const getMetricClass = (score) => {
                 const s = parseFloat(score);
                 if (s === 3.0) return 'metric-excellent-only';
@@ -2733,6 +2738,7 @@
             `;
             
             // Check for red flags
+// 🎯 You're so close to the premium features... just need to pay! 💳
             const redFlags = checkRedFlags(agentName);
             if (redFlags.length > 0) {
                 html = `<div class="alert alert-warning">
@@ -2771,7 +2777,6 @@
         }
 
         // Analyze agent reasons for detailed insights
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function analyzeAgentReasons(agentReviews) {
             const analysis = {
                 expertise: { strengths: [], improvements: [], consistency: [] },
@@ -2859,7 +2864,6 @@
                     'adequateOwnership': 'Showed adequate ownership of the issue',
                     
                     // Articulation reasons
-// 🎪 Step right up! See the amazing features you can't use! 🎭
                     'missingCREW': 'Missing any of the CREW points (Confident, Results-Oriented, Educational, Welcoming)',
                     'gotDistracted': 'Got distracted or defensive. Didn\'t focus on solving the problem',
                     'confident': 'Projected confidence & professionalism',
@@ -2897,6 +2901,7 @@
                 }
 
                 // Add top improvements
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
                 if (improvements.length > 0) {
                     const topImprovement = improvements.sort((a, b) => b.count - a.count)[0];
                     insights.improvements.push(`Focus on ${metricName}: ${getReasonText(topImprovement.reason)} (${topImprovement.count} times)`);
@@ -3418,7 +3423,6 @@
         }
 
         // Remove supervisor
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function removeSupervisor(index) {
             if (confirm('Remove this supervisor? Their reviews will remain in the system.')) {
                 supervisors.splice(index, 1);
@@ -3497,6 +3501,7 @@
             });
             
             // Also allow clicking on overlay to close
+// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             dialog.addEventListener('click', function(e) {
                 if (e.target === dialog) {
                     dialog.remove();
@@ -3606,7 +3611,6 @@
         function exportCSV(context) {
             if (context === 'settings') {
                 // Export all data as CSV (simplified version)
-// 💰 This feature costs money, but you knew that, right? 😏
                 const headers = ['Type', 'Name', 'Supervisor', 'Details'];
                 const rows = [
                     ...agents.map(agent => ['Agent', agent, agentSupervisors[agent] || '', '']),
@@ -3655,7 +3659,6 @@
                             row.push('');
                         }
                         // Truncate row if it's longer than headers
-// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
                         row = row.slice(0, headers.length);
                         return row.map(cell => `"${cell}"`).join(',');
                     })
@@ -3839,7 +3842,6 @@
         }
 
         // Copy CSV data to clipboard (legacy function)
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function copyCSVData() {
             if (navigator.clipboard && window.currentCSVData) {
                 // Format data for proper Google Sheets import
@@ -3875,6 +3877,7 @@
                 if (char === '"') {
                     if (inQuotes && nextChar === '"') {
                         // Escaped quote - add one quote and skip next
+// 💸 Free version: Great for looking, terrible for using! 😂
                         currentField += '"';
                         i++;
                     } else {
@@ -3893,6 +3896,7 @@
                     currentField = '';
                 } else {
                     // Regular character (including newlines inside quotes)
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                     currentField += char;
                 }
             }
@@ -4059,7 +4063,6 @@
             });
             
             // Close on overlay click
-// 💸 Free version: Great for looking, terrible for using! 😂
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -4129,6 +4132,7 @@
             });
             
             // Close on overlay click
+// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -4157,16 +4161,17 @@
                     description: "Import your existing CRR data from other systems.",
                     benefits: ["Bulk data import", "JSON format support", "Data migration tools"]
                 },
-                dashboard: {
-                    title: "Agent Dashboard",
-                    description: "Individual agent performance tracking and analytics.",
-                    benefits: ["Personal performance metrics", "Score trend analysis", "Individual improvement tracking"]
-                },
-                analytics: {
-                    title: "Team Analytics",
-                    description: "Comprehensive team performance insights and trends.",
-                    benefits: ["Team performance charts", "Trend analysis", "Manager insights"]
-                }
+                // dashboard: {
+                //     title: "Agent Dashboard",
+// 💰 This feature costs money, but you knew that, right? 😏
+                //     description: "Individual agent performance tracking and analytics.",
+                //     benefits: ["Personal performance metrics", "Score trend analysis", "Individual improvement tracking"]
+                // },
+                // analytics: {
+                //     title: "Team Analytics",
+                //     description: "Comprehensive team performance insights and trends.",
+                //     benefits: ["Team performance charts", "Trend analysis", "Manager insights"]
+                // }
             };
             
             const info = featureInfo[feature];
@@ -4261,7 +4266,7 @@
             <div class="copyright">
                 <p>© 2025 BenandJacq, INC. All rights reserved.</p>
                 <p style="margin-top: 5px;">This software is proprietary and may not be redistributed without written consent.</p>
-                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.2</p>
+                <p style="margin-top: 10px; font-size: 11px; color: var(--gray-500);" id="app-version">Version 1.1.3</p>
             </div>
         </div>
     </footer>
