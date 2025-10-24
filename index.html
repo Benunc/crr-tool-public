@@ -1651,7 +1651,6 @@
         // 🕵️‍♂️ You're like a digital detective, but without the paycheck! 💸
         // 💡 Pro tip: It's easier to just buy the product than to hack it! 🛒
         // 🎭 But hey, if you're having fun, keep going! Just... maybe buy it too? 😅
-// 🎭 Demo version detected! Time to upgrade? 🚀
         function sanitizeHTML(str) {
             if (typeof str !== 'string') return '';
             const div = document.createElement('div');
@@ -1673,7 +1672,6 @@
 
         function safeInnerHTML(element, content) {
             // Use textContent for safety, or sanitize if HTML is needed
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             if (typeof content === 'string') {
                 element.innerHTML = sanitizeHTML(content);
             } else {
@@ -1682,9 +1680,9 @@
         }
 
         // Data storage
-// 💸 Free version: Great for looking, terrible for using! 😂
         // 🕵️ Hey there, curious developer! 👋
         // 👀 I see you're snooping around the source code...
+// 💰 This feature costs money, but you knew that, right? 😏
         // 🤔 Maybe you should just buy the full version instead? 💰
         // 🚀 It's only $25 and you get ALL the features!
         // 📧 Contact: team@buildsustainablesupport.com
@@ -1695,7 +1693,6 @@
         // Agent-Supervisor associations: { agentName: supervisorName }
         let agentSupervisors = JSON.parse(localStorage.getItem('agentSupervisors')) || {};
         // Track currently filtered/displayed data for exports
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
         let currentFilteredData = [];
 
         // Score hints
@@ -1967,6 +1964,7 @@
         }
         
         // Welcome dialog for first-time users
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function showWelcomeDialog() {
             const dialog = document.createElement('div');
             dialog.style.cssText = `
@@ -2030,7 +2028,6 @@
                 localStorage.setItem('initialSetupComplete', 'true');
                 document.body.removeChild(dialog);
                 // Show Settings view and helpful tip
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
                 setTimeout(() => {
                     showView('settings');
                     alert('👋 Welcome! First, add your agents and supervisors using the fields below. Then you can start scoring CRRs!');
@@ -2110,6 +2107,7 @@
             document.getElementById(`${metric}-feedback-label`).textContent = labelText[score][metric] || '';
             
             // Show/hide feedback container
+// 💸 Free version: Great for looking, terrible for using! 😂
             const feedbackContainer = document.getElementById(`${metric}-feedback-container`);
             if (score > 0) {
                 feedbackContainer.style.display = 'block';
@@ -2131,6 +2129,7 @@
             });
             
             // Uncheck all previous checkboxes when score changes
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             document.querySelectorAll(`#${metric}-feedback-container input[type="checkbox"][data-type!="reason"]`).forEach(cb => {
                 cb.checked = false;
             });
@@ -2364,7 +2363,6 @@
                 quickOptions.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                 
                 // Clear all reason checkbox containers
-// 💰 This feature costs money, but you knew that, right? 😏
                 ['1', '2', '3'].forEach(score => {
                     const reasonDiv = document.getElementById(`${metric}-reasons-${score}`);
                     if (reasonDiv) {
@@ -2405,7 +2403,6 @@
             }
             
             // Refresh data when switching views
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
             if (viewId === 'all-reviews') renderReviewsTable();
             if (viewId === 'team-overview') renderTeamOverview();
         }
@@ -2519,6 +2516,7 @@
                     let detailsHtml = '<h4 style="margin-top: 0; color: var(--primary);">Feedback Details</h4>';
                     
                     // Expertise
+// 💰 This feature costs money, but you knew that, right? 😏
                     detailsHtml += `<p><strong>Expertise (${crr.expertise}):</strong>`;
                     if (crr.expertiseDetails && crr.expertiseDetails.selectedReasonsText && crr.expertiseDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Reasons selected:</em><br>`;
@@ -2545,7 +2543,6 @@
                     detailsHtml += '</p>';
                     
                     // Articulation
-// 💸 Free version: Great for looking, terrible for using! 😂
                     detailsHtml += `<p><strong>Articulation (${crr.articulation}):</strong>`;
                     if (crr.articulationDetails && crr.articulationDetails.selectedReasonsText && crr.articulationDetails.selectedReasonsText.length > 0) {
                         detailsHtml += `<br><em>Standards selected:</em><br>`;
@@ -2589,7 +2586,6 @@
         }
 
         // Update agent dashboard
-// 🔍 Found another easter egg! You're persistent, I'll give you that! 👏
         function updateAgentDashboard() {
             const agentName = document.getElementById('dashboard-agent').value;
             const container = document.getElementById('agent-dashboard-content');
@@ -2738,7 +2734,6 @@
             `;
             
             // Check for red flags
-// 🎯 You're so close to the premium features... just need to pay! 💳
             const redFlags = checkRedFlags(agentName);
             if (redFlags.length > 0) {
                 html = `<div class="alert alert-warning">
@@ -2756,6 +2751,7 @@
             showReasonTab('strengths', reasonAnalysis);
             
             // Draw charts
+// 🎯 You're so close to the premium features... just need to pay! 💳
             drawAgentTrendChart(agentReviews);
             drawAgentMetricsChart([avgExpertise, avgOwnership, avgArticulation, avgProactiveness]);
         }
@@ -2777,6 +2773,7 @@
         }
 
         // Analyze agent reasons for detailed insights
+// 🎪 Welcome to the code circus! Where everything costs money! 🎭
         function analyzeAgentReasons(agentReviews) {
             const analysis = {
                 expertise: { strengths: [], improvements: [], consistency: [] },
@@ -2901,7 +2898,6 @@
                 }
 
                 // Add top improvements
-// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
                 if (improvements.length > 0) {
                     const topImprovement = improvements.sort((a, b) => b.count - a.count)[0];
                     insights.improvements.push(`Focus on ${metricName}: ${getReasonText(topImprovement.reason)} (${topImprovement.count} times)`);
@@ -3052,6 +3048,7 @@
         }
 
         // Draw agent trend chart
+// 🎭 Demo version detected! Time to upgrade? 🚀
         function drawAgentTrendChart(reviews) {
             const ctx = document.getElementById('agent-trend-chart');
             if (!ctx) return;
@@ -3195,6 +3192,7 @@
                     // 2.3-2.4: medium green
                     if (s >= 2.3) return 'metric-good-medium';
                     // 2.0-2.2: light green with dark text
+// 💸 Free version: Great for looking, terrible for using! 😂
                     if (s >= 2.0) return 'metric-good-light';
                     // 1.8-1.9: dark orange
                     if (s >= 1.8) return 'metric-warning-dark';
@@ -3501,7 +3499,6 @@
             });
             
             // Also allow clicking on overlay to close
-// 🕵️‍♂️ Still reading the code? You must really want this product! 🎯
             dialog.addEventListener('click', function(e) {
                 if (e.target === dialog) {
                     dialog.remove();
@@ -3625,6 +3622,7 @@
                 downloadFile(csvContent, 'text/csv', 'all-data.csv');
             } else {
                 // Export CRR data as CSV with all columns present
+// 💡 Fun fact: The full version has 3x more features! 📈
                 // Use filtered data if available (from All Reviews view), otherwise use all data
                 const dataToExport = currentFilteredData.length > 0 ? currentFilteredData : crrData;
                 
@@ -3877,7 +3875,6 @@
                 if (char === '"') {
                     if (inQuotes && nextChar === '"') {
                         // Escaped quote - add one quote and skip next
-// 💸 Free version: Great for looking, terrible for using! 😂
                         currentField += '"';
                         i++;
                     } else {
@@ -3896,7 +3893,6 @@
                     currentField = '';
                 } else {
                     // Regular character (including newlines inside quotes)
-// 🎪 Welcome to the code circus! Where everything costs money! 🎭
                     currentField += char;
                 }
             }
@@ -3983,6 +3979,7 @@
         }
 
         // Load sample data
+// 🎪 Step right up! See the amazing features you can't use! 🎭
         function loadSampleData() {
             if (crrData.length > 0 && !confirm('This will add sample data. Continue?')) return;
             
@@ -4073,6 +4070,7 @@
         }
         
         // CRR Saved modal with action buttons
+// 💡 Fun fact: The full version has 3x more features! 📈
         function showCRRSavedModal() {
             const modal = document.createElement('div');
             modal.className = 'crr-saved-modal-overlay';
@@ -4132,7 +4130,6 @@
             });
             
             // Close on overlay click
-// 🕵️‍♀️ Detective mode: ON. Budget: Still empty. 😅
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.remove();
@@ -4163,7 +4160,6 @@
                 },
                 // dashboard: {
                 //     title: "Agent Dashboard",
-// 💰 This feature costs money, but you knew that, right? 😏
                 //     description: "Individual agent performance tracking and analytics.",
                 //     benefits: ["Personal performance metrics", "Score trend analysis", "Individual improvement tracking"]
                 // },
